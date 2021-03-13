@@ -2,6 +2,7 @@ extends Node2D
 class_name Character
 
 enum Ability {
+	MOVE,
 	HACK,
 	SQUEEZE,
 	CLIMB,

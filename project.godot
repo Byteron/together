@@ -32,12 +32,12 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Location",
 "language": "GDScript",
-"path": "res://src/map/Location.gd"
+"path": "res://src/level/Location.gd"
 }, {
-"base": "Node2D",
-"class": "Map",
+"base": "Resource",
+"class": "Terrain",
 "language": "GDScript",
-"path": "res://src/map/Map.gd"
+"path": "res://src/level/Terrain.gd"
 }, {
 "base": "Control",
 "class": "TitleScreen",
@@ -50,7 +50,7 @@ _global_script_class_icons={
 "Level": "",
 "LevelCamera": "",
 "Location": "",
-"Map": "",
+"Terrain": "",
 "TitleScreen": ""
 }
 

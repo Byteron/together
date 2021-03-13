@@ -10,7 +10,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	level.move_character(get_input_direction())
+	var direction = get_input_direction()
+	if direction:
+		level.move_character(direction)
 
 
 func get_input_direction() -> Vector2:
