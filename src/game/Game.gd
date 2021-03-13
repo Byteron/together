@@ -11,6 +11,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	var direction = get_input_direction()
+
 	if direction:
 		level.move_character(direction)
 
@@ -21,4 +22,5 @@ func get_input_direction() -> Vector2:
 	var up = Input.is_action_pressed("ui_up")
 	var down = Input.is_action_pressed("ui_down")
 
-	return Vector2(int(right) - int(left), int(down) - int(up))
+	var direction = Vector2(int(right) - int(left), int(down) - int(up))
+	return Vector2.ZERO if direction.length() > 1 else direction
