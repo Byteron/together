@@ -1,20 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/level/Level.gd" type="Script" id=1]
 [ext_resource path="res://src/map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://data/characters/Nerd.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/level/LevelCamera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://data/characters/Athlete.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
+start_position = Vector2( 5, 8 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="Nerd" parent="Characters" instance=ExtResource( 3 )]
-
-[node name="Athlete" parent="Characters" instance=ExtResource( 5 )]
 
 [node name="LevelCamera" parent="." instance=ExtResource( 4 )]

@@ -5,12 +5,26 @@ class_name Level
 var active_character_index = 0
 var active_character: Character = null
 
+export var start_position := Vector2()
+
 onready var characters := $Characters
 onready var camera: LevelCamera = $LevelCamera
 onready var map: Map = $Map
 
+
 func _ready() -> void:
 	change_character($Characters/Nerd)
+	teleport_character(start_position)
+
+
+func add_character(character: Character) -> void:
+	characters.add_child(character)
+
+
+func teleport_character(target_cell: Vector2) -> void:
+	var target_position = map.map_to_world(target_cell)
+	active_character.cell = target_cell
+	active_character.position = target_position
 
 
 func move_character(direction: Vector2) -> void:
