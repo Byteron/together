@@ -30,6 +30,10 @@ func map_to_world(cell: Vector2) -> Vector2:
 	return cell * CELL_SIZE + CELL_SIZE / 2
 
 
+func interact() -> void:
+	var loc: Location = locations[active_character.cell + active_character.facing]
+	loc.interact()
+
 func spawn_character(character: Character) -> void:
 	characters.add_child(character)
 
@@ -55,6 +59,7 @@ func move_character(direction: Vector2) -> void:
 	loc.character = null
 	next_loc.character = active_character
 
+	active_character.facing = direction
 	active_character.cell = next_loc.cell
 	active_character.move_to(next_loc.position)
 

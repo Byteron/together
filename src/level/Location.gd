@@ -7,6 +7,11 @@ var terrain: Terrain = null
 var interactable: Interactable = null
 var character: Character = null
 
+
+func interact() -> void:
+	if interactable:
+		interactable.interact()
+
+
 func is_blocking(character: Character) -> bool:
-	print(interactable, self.character, terrain.is_blocking(character))
-	return interactable or self.character or terrain.is_blocking(character)
+	return interactable and interactable.is_blocking(character) or self.character or terrain.is_blocking(character)

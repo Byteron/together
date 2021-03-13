@@ -10,6 +10,7 @@ enum Ability {
 	RAM,
 }
 
+var facing := Vector2(0, 1)
 var cell := Vector2()
 
 export(Array, Ability) var abilities := []
