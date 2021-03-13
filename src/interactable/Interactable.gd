@@ -1,20 +1,33 @@
 extends Node2D
 class_name Interactable
 
+export(Array, Character.Ability) var allow_interaction := []
+
 onready var sprite: Sprite = $Sprite
 
 
-func interact() -> void:
-	_interact()
+func interact(character: Character) -> void:
+	_interact(character)
 
 
 func is_blocking(character: Character) -> bool:
 	return _is_blocking(character)
 
 
-func _interact() -> void:
+func can_interact(character: Character) -> bool:
+	return _can_interact(character)
+
+
+func _interact(character: Character) -> void:
 	pass
 
 
 func _is_blocking(character: Character) -> bool:
 	return true
+
+
+func _can_interact(character: Character) -> bool:
+	for ability in character.abilities:
+		if allow_interaction.has(ability):
+			return true
+	return false

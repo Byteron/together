@@ -5,3 +5,4 @@
 
 [node name="Door" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+allow_interaction = [ 1 ]

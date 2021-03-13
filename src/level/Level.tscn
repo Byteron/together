@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/terrain.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/level/LevelCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://data/characters/Athlete.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interactable/door/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/interactable/terminal/Terminal.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,6 +21,19 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Door" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 136, 152 )
+id = 1
+
+[node name="Terminal" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 104, 72 )
+fragments = [ 1 ]
+
+[node name="Terminal2" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 56, 72 )
+fragments = [ 1 ]
+
+[node name="Terminal3" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 56, 168 )
+fragments = [ 1 ]
 
 [node name="Characters" type="Node2D" parent="."]
 

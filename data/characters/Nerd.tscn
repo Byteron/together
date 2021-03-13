@@ -3,3 +3,4 @@
 [ext_resource path="res://src/character/Character.tscn" type="PackedScene" id=1]
 
 [node name="Nerd" instance=ExtResource( 1 )]
+abilities = [ 0, 1 ]

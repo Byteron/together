@@ -8,9 +8,15 @@ var interactable: Interactable = null
 var character: Character = null
 
 
-func interact() -> void:
+func can_interact(character: Character) -> bool:
 	if interactable:
-		interactable.interact()
+		return interactable.can_interact(character)
+	return false
+
+
+func interact(character: Character) -> void:
+	if interactable:
+		interactable.interact(character)
 
 
 func is_blocking(character: Character) -> bool:

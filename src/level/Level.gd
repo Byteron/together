@@ -32,7 +32,9 @@ func map_to_world(cell: Vector2) -> Vector2:
 
 func interact() -> void:
 	var loc: Location = locations[active_character.cell + active_character.facing]
-	loc.interact()
+	if loc.can_interact(active_character):
+		loc.interact(active_character)
+
 
 func spawn_character(character: Character) -> void:
 	characters.add_child(character)
@@ -51,7 +53,8 @@ func move_character(direction: Vector2) -> void:
 	var loc: Location = locations[active_character.cell]
 	var next_loc: Location = locations[active_character.cell + direction]
 
-	print(loc.character, next_loc.character)
+	active_character.facing = direction
+
 	if next_loc.is_blocking(active_character):
 		print(next_loc.cell, " is blocked")
 		return
@@ -59,7 +62,6 @@ func move_character(direction: Vector2) -> void:
 	loc.character = null
 	next_loc.character = active_character
 
-	active_character.facing = direction
 	active_character.cell = next_loc.cell
 	active_character.move_to(next_loc.position)
 
