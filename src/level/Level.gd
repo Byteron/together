@@ -8,21 +8,18 @@ var active_character: Character = null
 
 var locations := {}
 
-export var start_position := Vector2()
-
 onready var characters := $Characters
+onready var objects := $Objects
+
 onready var camera: LevelCamera = $LevelCamera
 onready var tile_map: TileMap = $TileMap
-
-onready var WALL_TILE = tile_map.tile_set.find_tile_by_name("Wall")
-onready var FLOOR_TILE = tile_map.tile_set.find_tile_by_name("Floor")
-onready var WATER_TILE = tile_map.tile_set.find_tile_by_name("Water")
 
 
 func _ready() -> void:
 	_init_locations()
+	_init_characters()
+	_init_objects()
 	_change_character($Characters/Nerd)
-	teleport_character(start_position)
 
 
 func world_to_map(position: Vector2) -> Vector2:
@@ -47,14 +44,19 @@ func move_character(direction: Vector2) -> void:
 	if not active_character.can_move():
 		return
 
-	var loc = locations[active_character.cell + direction]
+	var loc: Location = locations[active_character.cell]
+	var next_loc: Location = locations[active_character.cell + direction]
 
-	if loc.terrain.is_blocking(active_character):
-		print(loc.cell, " is blocked")
+	print(loc.character, next_loc.character)
+	if next_loc.is_blocking(active_character):
+		print(next_loc.cell, " is blocked")
 		return
 
-	active_character.cell = loc.cell
-	active_character.move_to(loc.position)
+	loc.character = null
+	next_loc.character = active_character
+
+	active_character.cell = next_loc.cell
+	active_character.move_to(next_loc.position)
 
 
 func cycle_character() -> void:
@@ -74,19 +76,37 @@ func _init_locations() -> void:
 
 	for y in range(rect.position.y, rect.end.y):
 		for x in range(rect.position.x, rect.end.x):
+			var tile = tile_map.get_cell(x, y)
+
+			if tile == TileMap.INVALID_CELL:
+				continue
+
 			var cell := Vector2(x, y)
 			var loc := Location.new()
 
 			loc.cell = cell
 			loc.position = map_to_world(cell)
 
-			var tile = tile_map.get_cell(x, y)
 
-			if tile == WALL_TILE:
-				loc.terrain = load("res://data/terrains/wall.tres")
-			if tile == FLOOR_TILE:
-				loc.terrain = load("res://data/terrains/floor.tres")
-			if tile == WATER_TILE:
-				loc.terrain = load("res://data/terrains/water.tres")
+			print(Data.terrains, tile_map.tile_set.tile_get_name(tile))
+			loc.terrain = Data.terrains[tile_map.tile_set.tile_get_name(tile)]
 
 			locations[cell] = loc
+
+
+func _init_characters() -> void:
+	for character in characters.get_children():
+		var cell = world_to_map(character.position)
+		var loc: Location = locations[cell]
+
+		character.cell = cell
+		character.position = map_to_world(cell)
+
+		loc.character = character
+
+
+func _init_objects() -> void:
+	for object in objects.get_children():
+		var cell = world_to_map(object.position)
+		var loc = locations[cell]
+		loc.interactable = object
