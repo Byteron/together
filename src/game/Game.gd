@@ -5,7 +5,8 @@ onready var level: Level = $Level
 
 
 func _ready() -> void:
-	Music.play("Solitude")
+#	Music.play("Solitude")
+	pass
 
 
 func _input(event: InputEvent) -> void:
