@@ -35,7 +35,7 @@ func get_fragments(id: int) -> int:
 
 
 func move_to(target_position: Vector2) -> void:
-	tween.interpolate_property(self, "position", position, target_position, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "position", position, target_position, 0.28, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 

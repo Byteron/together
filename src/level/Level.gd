@@ -40,10 +40,13 @@ func spawn_character(character: Character) -> void:
 	characters.add_child(character)
 
 
-func teleport_character(target_cell: Vector2) -> void:
+func teleport_character(character: Character, target_cell: Vector2) -> void:
+	var loc: Location = locations[target_cell]
+	loc.character = character
+
 	var target_position = map_to_world(target_cell)
-	active_character.cell = target_cell
-	active_character.position = target_position
+	character.cell = target_cell
+	character.position = target_position
 
 
 func move_character(direction: Vector2) -> void:
@@ -115,5 +118,14 @@ func _init_characters() -> void:
 func _init_objects() -> void:
 	for object in objects.get_children():
 		var cell = world_to_map(object.position)
-		var loc = locations[cell]
-		loc.interactable = object
+		for vec in object.size:
+			var loc = locations[cell + vec]
+			loc.interactable = object
+
+		if object is Bunker:
+			object.connect("character_freed", self, "_on_character_freed", [cell])
+
+
+func _on_character_freed(character: Character, cell: Vector2) -> void:
+	spawn_character(character)
+	teleport_character(character, cell)

@@ -4,6 +4,10 @@ class_name Game
 onready var level: Level = $Level
 
 
+func _ready() -> void:
+	Music.play("Solitude")
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("swap_character"):
 		level.cycle_character()

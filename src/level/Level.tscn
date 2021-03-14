@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/terrain.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://data/characters/Athlete.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interactable/door/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/interactable/terminal/Terminal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/interactable/bunker/Bunker.tscn" type="PackedScene" id=8]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,12 +36,15 @@ fragments = [ 1 ]
 position = Vector2( 56, 168 )
 fragments = [ 1 ]
 
+[node name="Bunker" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 184, 56 )
+allow_interaction = [ 1 ]
+id = 1
+Character = ExtResource( 5 )
+
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="Nerd" parent="Characters" instance=ExtResource( 3 )]
 position = Vector2( 56, 88 )
-
-[node name="Athlete" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 88, 120 )
 
 [node name="LevelCamera" parent="." instance=ExtResource( 4 )]

@@ -2,6 +2,7 @@ extends Node2D
 class_name Interactable
 
 export(Array, Character.Ability) var allow_interaction := []
+export(Array, Vector2) var size := [Vector2(0, 0)]
 
 onready var sprite: Sprite = $Sprite
 
