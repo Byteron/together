@@ -95,6 +95,7 @@ config/icon="res://icon.png"
 Scenes="*res://src/global/Scenes.tscn"
 Data="*res://src/global/Data.gd"
 Music="*res://src/global/Music.tscn"
+Writer="*res://src/global/Writer.tscn"
 
 [display]
 
