@@ -9,14 +9,17 @@ export var id := 0
 export var fragments_needed := 3
 
 export var Character: PackedScene = null
+export(Array, String) var story := []
 
 
 func open() -> void:
 	sprite.frame = 1
-	if not _was_opened:
-		emit_signal("character_freed", Character.instance())
-
+	emit_signal("character_freed", Character.instance())
 	_was_opened = true
+
+	for text in story:
+		Writer.write(text)
+	Writer.start()
 
 
 func _interact(character: Character):

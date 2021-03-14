@@ -7,7 +7,7 @@ const TEXT_SHOW_TIME := 2.0
 onready var tween: Tween = $Tween
 onready var backdrop: TextureRect = $Backdrop
 onready var frame: TextureRect = $Frame
-onready var label: Label = $CenterContainer/Label
+onready var label: Label = $Label
 
 var toggle = false
 
@@ -31,6 +31,9 @@ func write(text: String) -> void:
 
 
 func start() -> void:
+	if texts.empty():
+		return
+
 	get_tree().paused = true
 	_is_finished = false
 	_blend_in()
@@ -75,7 +78,6 @@ func end() -> void:
 
 	_blend_out()
 
-	get_tree().paused = false
 
 
 func _on_Tween_tween_all_completed() -> void:
@@ -84,3 +86,5 @@ func _on_Tween_tween_all_completed() -> void:
 		_show_text(text)
 	elif not _is_finished:
 		end()
+	else:
+		get_tree().paused = false

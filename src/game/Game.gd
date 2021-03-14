@@ -16,13 +16,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		level.interact()
 
-	if event.is_action_pressed("ui_accept"):
-		Writer.write("This is some very cool story")
-		Writer.write("with multiple text pages")
-		Writer.write("and also\nmultiline text with\nthree rows")
-		Writer.write("and very cool blending yooo")
-		Writer.start()
-
 
 func _process(delta: float) -> void:
 	var direction = get_input_direction()

@@ -41,6 +41,7 @@ position = Vector2( 184, 56 )
 allow_interaction = [ 1 ]
 id = 1
 Character = ExtResource( 5 )
+story = [ "Finally, after all the fragments were found...", "...our hero could free his mother." ]
 
 [node name="Characters" type="Node2D" parent="."]
 

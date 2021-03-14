@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/fonts/poco/Poco.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
+size = 10
 font_data = ExtResource( 4 )
 
 [node name="Writer" type="CanvasLayer"]
@@ -34,21 +34,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 54.0
-margin_top = 74.0
-margin_right = 266.0
-margin_bottom = 125.0
 custom_fonts/font = SubResource( 1 )
 text = "This is some fancy text
 how is it going yo."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
