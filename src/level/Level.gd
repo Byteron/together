@@ -98,8 +98,6 @@ func _init_locations() -> void:
 			loc.cell = cell
 			loc.position = map_to_world(cell)
 
-
-			print(Data.terrains, tile_map.tile_set.tile_get_name(tile))
 			loc.terrain = Data.terrains[tile_map.tile_set.tile_get_name(tile)]
 
 			locations[cell] = loc
