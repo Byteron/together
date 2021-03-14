@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/fonts/poco/Poco.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 10
+size = 40
 font_data = ExtResource( 4 )
 
 [node name="Writer" type="CanvasLayer"]
@@ -16,20 +16,22 @@ script = ExtResource( 3 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Backdrop" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Frame" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( 160, 100 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 640, 360 )
 mouse_filter = 2
 texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

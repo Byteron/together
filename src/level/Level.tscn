@@ -58,7 +58,8 @@ story = [ "Finally, after all the fragments were found...", "...our hero could f
 position = Vector2( 56, 88 )
 
 [node name="LevelCamera" parent="." instance=ExtResource( 4 )]
+zoom = Vector2( 0.25, 0.25 )
 
 [connection signal="toggled" from="Objects/Switch" to="Objects/Door" method="toggle"]
-[connection signal="toggled" from="Objects/Switch2" to="Objects/Door2" method="toggle"]
 [connection signal="toggled" from="Objects/Switch2" to="Objects/Door" method="toggle"]
+[connection signal="toggled" from="Objects/Switch2" to="Objects/Door2" method="toggle"]
