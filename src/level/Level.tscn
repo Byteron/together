@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/terrain.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/interactable/door/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/interactable/terminal/Terminal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interactable/bunker/Bunker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/interactable/switch/Switch.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,9 +21,17 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Objects" type="Node2D" parent="."]
 
+[node name="Switch" parent="Objects" instance=ExtResource( 9 )]
+position = Vector2( 88, 104 )
+
+[node name="Switch2" parent="Objects" instance=ExtResource( 9 )]
+position = Vector2( 88, 120 )
+
 [node name="Door" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 136, 152 )
-id = 1
+
+[node name="Door2" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 136, 168 )
 
 [node name="Terminal" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 104, 72 )
@@ -49,3 +58,7 @@ story = [ "Finally, after all the fragments were found...", "...our hero could f
 position = Vector2( 56, 88 )
 
 [node name="LevelCamera" parent="." instance=ExtResource( 4 )]
+
+[connection signal="toggled" from="Objects/Switch" to="Objects/Door" method="toggle"]
+[connection signal="toggled" from="Objects/Switch2" to="Objects/Door2" method="toggle"]
+[connection signal="toggled" from="Objects/Switch2" to="Objects/Door" method="toggle"]
