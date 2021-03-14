@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/ability-move.png" type="Texture" id=1]
+
+[node name="AbilityItem" type="TextureRect"]
+margin_right = 16.0
+margin_bottom = 16.0
+hint_tooltip = "Can Move"
+size_flags_horizontal = 13
+size_flags_vertical = 13
+texture = ExtResource( 1 )

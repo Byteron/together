@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "AbilityData",
+"language": "GDScript",
+"path": "res://src/character/AbilityData.gd"
+}, {
+"base": "PanelContainer",
+"class": "AbilityPanel",
+"language": "GDScript",
+"path": "res://src/game/hud/AbilityPanel.gd"
+}, {
 "base": "Interactable",
 "class": "Bunker",
 "language": "GDScript",
@@ -70,6 +80,8 @@ _global_script_classes=[ {
 "path": "res://src/menu/TitleScreen.gd"
 } ]
 _global_script_class_icons={
+"AbilityData": "",
+"AbilityPanel": "",
 "Bunker": "",
 "Character": "",
 "Door": "",

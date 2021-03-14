@@ -1,10 +1,12 @@
 extends Node
 
 var terrains := {}
+var abilities := {}
 
 
 func _ready() -> void:
 	_load_terrains()
+	_load_abilities()
 
 
 func _load_terrains() -> void:
@@ -17,3 +19,15 @@ func _load_terrains() -> void:
 		terrains[file.id] = terrain
 
 	print(terrains)
+
+
+func _load_abilities() -> void:
+	abilities.clear()
+
+	var files = Loader.load_dir("res://data/abilities/", ["tres"])
+
+	for file in files:
+		var ability = file.data
+		abilities[file.data.ability] = ability
+
+	print(abilities)

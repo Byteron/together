@@ -79,6 +79,7 @@ func _change_character(character: Character) -> void:
 	active_character_index = character.get_index()
 	active_character = character
 	camera.target = character
+	get_tree().call_group("AbilityPanel", "update_info", character)
 
 
 func _init_locations() -> void:

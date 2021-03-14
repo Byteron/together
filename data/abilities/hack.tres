@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/character/AbilityData.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/ability-hack.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+ability = 1
+hint = "Can Hack"
+texture = ExtResource( 2 )
