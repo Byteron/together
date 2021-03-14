@@ -1,44 +1,152 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/menu/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound/ambience/intro.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/intro.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/fonts/AldotheApache.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/gwj.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/images/title.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/sound/sfx/tape_stop.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/images/noise.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+void fragment() {
+	float noise1 = texture(TEXTURE, UV + vec2(TIME, 0.0)).r;
+	float noise2 = texture(TEXTURE, UV + vec2(0.0, TIME)).g;
+	vec3 colour = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+	if ((noise1 > 0.5) != (noise2 > 0.5)) {
+		colour *= 0.8;
+	}
+	COLOR.rgb = colour;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 9 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 7 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 608.0
-margin_top = 326.0
-margin_right = 672.0
-margin_bottom = 394.0
+[node name="Label_GWJ" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 64.0
+margin_top = -33.5
+margin_right = 580.0
+margin_bottom = 33.5
+custom_fonts/font = ExtResource( 5 )
+text = "Godot Wild Jam 31"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 64.0
-margin_bottom = 20.0
+[node name="VBox_Menu" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -238.0
+margin_top = -88.0
+margin_right = -64.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="VBox_Menu"]
+margin_right = 174.0
+margin_bottom = 41.0
 text = "PLAY"
+align = 2
 
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 64.0
-margin_bottom = 44.0
+[node name="Settings" type="Button" parent="VBox_Menu"]
+margin_top = 45.0
+margin_right = 174.0
+margin_bottom = 86.0
+text = "SETTINGS"
+align = 2
+
+[node name="Credits" type="Button" parent="VBox_Menu"]
+margin_top = 90.0
+margin_right = 174.0
+margin_bottom = 131.0
 text = "CREDITS"
+align = 2
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 64.0
-margin_bottom = 68.0
+[node name="Quit" type="Button" parent="VBox_Menu"]
+margin_top = 135.0
+margin_right = 174.0
+margin_bottom = 176.0
 text = "QUIT"
+align = 2
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[node name="Overlay" type="TextureRect" parent="."]
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="Audio_TapeStop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="Audio_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "BGM"
+
+[node name="Audio_Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+bus = "Ambience"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="VBox_Menu/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBox_Menu/Quit" to="." method="_on_Quit_pressed"]
