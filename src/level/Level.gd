@@ -12,14 +12,16 @@ onready var characters := $Characters
 onready var objects := $Objects
 
 onready var camera: LevelCamera = $LevelCamera
-onready var tile_map: TileMap = $TileMap
+
+onready var walls: TileMap = $Walls
+onready var floors: TileMap = $Floors
 
 
 func _ready() -> void:
 	_init_locations()
 	_init_characters()
 	_init_objects()
-	_change_character($Characters/Nerd)
+	_change_character($Characters.get_child(0))
 
 
 func world_to_map(position: Vector2) -> Vector2:
@@ -83,11 +85,14 @@ func _change_character(character: Character) -> void:
 
 
 func _init_locations() -> void:
-	var rect = tile_map.get_used_rect()
+	var rect = floors.get_used_rect()
 
 	for y in range(rect.position.y, rect.end.y):
 		for x in range(rect.position.x, rect.end.x):
-			var tile = tile_map.get_cell(x, y)
+			var tile = walls.get_cell(x, y)
+
+			if tile == TileMap.INVALID_CELL:
+				tile = floors.get_cell(x, y)
 
 			if tile == TileMap.INVALID_CELL:
 				continue
@@ -98,7 +103,7 @@ func _init_locations() -> void:
 			loc.cell = cell
 			loc.position = map_to_world(cell)
 
-			loc.terrain = Data.terrains[tile_map.tile_set.tile_get_name(tile)]
+			loc.terrain = Data.terrains[floors.tile_set.tile_get_name(tile)]
 
 			locations[cell] = loc
 

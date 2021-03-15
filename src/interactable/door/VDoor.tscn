@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/interactable/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interactable/door/Door.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gate_vertical.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="VDoor" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+allow_interaction = [ 1 ]
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/close = SubResource( 1 )
+anims/open = SubResource( 2 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )
+hframes = 4

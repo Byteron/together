@@ -12,12 +12,12 @@ func toggle() -> void:
 
 
 func open() -> void:
-	sprite.frame = 1
+	anim.play("open")
 	_is_closed = false
 
 
 func close() -> void:
-	sprite.frame = 0
+	anim.play("close")
 	_is_closed = true
 
 
