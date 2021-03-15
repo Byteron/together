@@ -7,9 +7,13 @@ var active_character_index = 0
 var active_character: Character = null
 
 var locations := {}
+var exits := []
 
-onready var characters := $Characters
-onready var objects := $Objects
+var is_finished = false
+
+onready var character_container := $Characters
+onready var object_container := $Objects
+onready var exit_container := $Exits
 
 onready var camera: LevelCamera = $LevelCamera
 
@@ -20,6 +24,7 @@ onready var floors: TileMap = $Floors
 func _ready() -> void:
 	_init_locations()
 	_init_characters()
+	_init_exits()
 	_init_objects()
 	_change_character($Characters.get_child(0))
 
@@ -33,13 +38,16 @@ func map_to_world(cell: Vector2) -> Vector2:
 
 
 func interact() -> void:
+	if is_finished:
+		return
+
 	var loc: Location = locations[active_character.cell + active_character.facing]
 	if loc.can_interact(active_character):
 		loc.interact(active_character)
 
 
 func spawn_character(character: Character) -> void:
-	characters.add_child(character)
+	character_container.add_child(character)
 
 
 func teleport_character(character: Character, target_cell: Vector2) -> void:
@@ -52,7 +60,7 @@ func teleport_character(character: Character, target_cell: Vector2) -> void:
 
 
 func move_character(direction: Vector2) -> void:
-	if not active_character.can_move():
+	if not active_character.can_move() or is_finished:
 		return
 
 	var loc: Location = locations[active_character.cell]
@@ -70,10 +78,15 @@ func move_character(direction: Vector2) -> void:
 	active_character.cell = next_loc.cell
 	active_character.move_to(next_loc.position)
 
+	_check_end_conditions()
+
 
 func cycle_character() -> void:
-	var index = (active_character_index + 1) % characters.get_child_count()
-	var character = characters.get_child(index)
+	if is_finished:
+		return
+
+	var index = (active_character_index + 1) % character_container.get_child_count()
+	var character = character_container.get_child(index)
 	_change_character(character)
 
 
@@ -109,7 +122,7 @@ func _init_locations() -> void:
 
 
 func _init_characters() -> void:
-	for character in characters.get_children():
+	for character in character_container.get_children():
 		var cell = world_to_map(character.position)
 		var loc: Location = locations[cell]
 
@@ -120,7 +133,7 @@ func _init_characters() -> void:
 
 
 func _init_objects() -> void:
-	for object in objects.get_children():
+	for object in object_container.get_children():
 		var cell = world_to_map(object.position)
 		for vec in object.size:
 			var loc = locations[cell + vec]
@@ -128,6 +141,33 @@ func _init_objects() -> void:
 
 		if object is Bunker:
 			object.connect("character_freed", self, "_on_character_freed", [cell])
+
+
+func _init_exits() -> void:
+	for exit in exit_container.get_children():
+		var cell = world_to_map(exit.position)
+		exits.append(cell)
+
+
+func _check_end_conditions() -> void:
+	var all_chars_on_exit = true
+
+	for character in character_container.get_children():
+		if not exits.has(character.cell):
+			all_chars_on_exit = false
+
+	if character_container.get_child_count() == exits.size() and all_chars_on_exit:
+		is_finished = true
+
+	print("check condition: ", is_finished)
+	if is_finished:
+		_finish()
+
+
+func _finish() -> void:
+	print("finish")
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().reload_current_scene()
 
 
 func _on_character_freed(character: Character, cell: Vector2) -> void:
