@@ -88,6 +88,11 @@ _global_script_classes=[ {
 "class": "TitleScreen",
 "language": "GDScript",
 "path": "res://src/menu/TitleScreen.gd"
+}, {
+"base": "Interactable",
+"class": "Vent",
+"language": "GDScript",
+"path": "res://src/interactable/vent/Vent.gd"
 } ]
 _global_script_class_icons={
 "AbilityData": "",
@@ -105,7 +110,8 @@ _global_script_class_icons={
 "Switch": "",
 "Terminal": "",
 "Terrain": "",
-"TitleScreen": ""
+"TitleScreen": "",
+"Vent": ""
 }
 
 [application]

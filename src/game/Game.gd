@@ -8,7 +8,7 @@ onready var level_container := $LevelContainer
 
 func _ready() -> void:
 #	Music.play("Solitude")
-	level = Data.levels["Level1"].instance()
+	level = Data.levels["Sandbox"].instance()
 	level_container.add_child(level)
 
 

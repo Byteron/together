@@ -55,8 +55,11 @@ func spawn_character(character: Character) -> void:
 
 
 func teleport_character(character: Character, target_cell: Vector2) -> void:
-	var loc: Location = locations[target_cell]
-	loc.character = character
+	var loc: Location = locations[active_character.cell]
+	var next_loc: Location = locations[target_cell]
+
+	loc.character = null
+	next_loc.character = character
 
 	var target_position = map_to_world(target_cell)
 	character.cell = target_cell
@@ -146,6 +149,8 @@ func _init_objects() -> void:
 		if object is Bunker:
 			object.connect("character_freed", self, "_on_character_freed", [cell])
 
+		if object is Vent:
+			object.connect("interacted", self, "_on_vent_interacted")
 
 func _init_exits() -> void:
 	for exit in exit_container.get_children():
@@ -172,6 +177,11 @@ func _finish() -> void:
 	print("finish")
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().reload_current_scene()
+
+
+func _on_vent_interacted(character: Character, pos: Vector2) -> void:
+	var cell = world_to_map(pos)
+	teleport_character(active_character, cell)
 
 
 func _on_character_freed(character: Character, cell: Vector2) -> void:
