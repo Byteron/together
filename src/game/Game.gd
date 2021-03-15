@@ -1,12 +1,15 @@
 extends Node2D
 class_name Game
 
-onready var level: Level = $Level
+var level: Level = null
+
+onready var level_container := $LevelContainer
 
 
 func _ready() -> void:
 #	Music.play("Solitude")
-	pass
+	level = Data.levels["Level1"].instance()
+	level_container.add_child(level)
 
 
 func _input(event: InputEvent) -> void:

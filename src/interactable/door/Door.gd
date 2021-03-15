@@ -1,7 +1,12 @@
 extends Interactable
 class_name Door
 
-var _is_closed = true
+export var _is_closed = true
+
+
+func _ready() -> void:
+	if not _is_closed:
+		open()
 
 
 func toggle() -> void:

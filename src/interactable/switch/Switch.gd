@@ -9,6 +9,14 @@ signal toggled()
 
 var _is_active := false
 
+export(Array, NodePath) var doors := []
+
+
+func _ready() -> void:
+	for path in doors:
+		var door: Door = get_node(path)
+		connect("toggled", door, "toggle")
+
 
 func _interact(__: Character) -> void:
 	if _is_active:

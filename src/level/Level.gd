@@ -26,7 +26,11 @@ func _ready() -> void:
 	_init_characters()
 	_init_exits()
 	_init_objects()
-	_change_character($Characters.get_child(0))
+
+	var character = $Characters.get_child(0)
+
+	if character:
+		_change_character(character)
 
 
 func world_to_map(position: Vector2) -> Vector2:
