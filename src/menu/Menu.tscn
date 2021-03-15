@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound/ui/ui_confirm.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sound/ui/ui_select.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/ui/ui_back.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/ui/ui_move.ogg" type="AudioStream" id=5]
+
+[node name="Menu" type="Control"]
+margin_left = 16.0
+margin_right = 56.0
+margin_bottom = 14.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio_Back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "UI"
+
+[node name="Audio_Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "UI"
+
+[node name="Audio_Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "UI"
+
+[node name="Audio_Start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "UI"
+
+[node name="Tween" type="Tween" parent="."]
