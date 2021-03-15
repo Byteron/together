@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tape_stop.ogg-be98f7f51e0d4aa0585f3c577915a24d.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/tape_stop.ogg"
+dest_files=[ "res://.import/tape_stop.ogg-be98f7f51e0d4aa0585f3c577915a24d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
