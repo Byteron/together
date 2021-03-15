@@ -139,6 +139,7 @@ func _on_Menu_variable_changed(variable_name : String) -> void:
 	Settings.sfx_volume = menu.variables["sfx_volume"]["value"]
 	Settings.bgm_volume = menu.variables["bgm_volume"]["value"]
 	Settings.amb_volume = menu.variables["amb_volume"]["value"]
+	Settings.ui_volume = menu.variables["ui_volume"]["value"]
 	Settings.apply_config()
 	Settings.save_config()
 
