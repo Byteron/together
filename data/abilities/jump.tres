@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/images/ability-swim.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/ability-jump.png" type="Texture" id=1]
 [ext_resource path="res://src/character/AbilityData.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
-ability = 4
-hint = "Can Swim"
+ability = 3
+hint = "Can jump over chasms"
 texture = ExtResource( 1 )

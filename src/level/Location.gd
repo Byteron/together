@@ -20,7 +20,7 @@ func interact(character: Character) -> void:
 
 
 func is_jumpable() -> bool:
-	return terrain and terrain.is_jumpable and (not interactable or interactable.is_jumpable)
+	return terrain and terrain.is_jumpable and (not interactable or interactable.is_jumpable) and not character
 
 
 func is_blocking(character: Character) -> bool:

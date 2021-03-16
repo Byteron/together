@@ -70,30 +70,20 @@ func jump_character() -> void:
 	if not active_character.can_jump() or is_finished:
 		return
 
-	var loc: Location = locations[active_character.cell + active_character.facing]
-
-	if not loc.is_jumpable():
-		return
-
-	_jump_character(active_character.facing * 2)
-
-
-func _jump_character(direction: Vector2) -> void:
-	if not direction:
-		return
+	var direction = active_character.facing
 
 	var loc: Location = locations[active_character.cell]
 
 	if not locations.has(active_character.cell + direction):
-		_jump_character(direction - active_character.facing)
 		return
 
 	var next_loc: Location = locations[active_character.cell + direction]
 
+	if next_loc.is_blocking(active_character) and next_loc.is_jumpable():
+		next_loc = locations[active_character.cell + direction * 2]
 
 	if next_loc.is_blocking(active_character):
 		print(next_loc.cell, " is blocked")
-		_jump_character(direction - active_character.facing)
 		return
 
 	loc.character = null
@@ -103,6 +93,8 @@ func _jump_character(direction: Vector2) -> void:
 	active_character.jump_to(next_loc.position)
 
 	_check_end_conditions()
+
+
 
 
 func move_character(direction: Vector2) -> void:
