@@ -66,11 +66,54 @@ func teleport_character(character: Character, target_cell: Vector2) -> void:
 	character.position = target_position
 
 
+func jump_character() -> void:
+	if not active_character.can_jump() or is_finished:
+		return
+
+	var loc: Location = locations[active_character.cell + active_character.facing]
+
+	if not loc.is_jumpable():
+		return
+
+	_jump_character(active_character.facing * 2)
+
+
+func _jump_character(direction: Vector2) -> void:
+	if not direction:
+		return
+
+	var loc: Location = locations[active_character.cell]
+
+	if not locations.has(active_character.cell + direction):
+		_jump_character(direction - active_character.facing)
+		return
+
+	var next_loc: Location = locations[active_character.cell + direction]
+
+
+	if next_loc.is_blocking(active_character):
+		print(next_loc.cell, " is blocked")
+		_jump_character(direction - active_character.facing)
+		return
+
+	loc.character = null
+	next_loc.character = active_character
+
+	active_character.cell = next_loc.cell
+	active_character.jump_to(next_loc.position)
+
+	_check_end_conditions()
+
+
 func move_character(direction: Vector2) -> void:
 	if not active_character.can_move() or is_finished:
 		return
 
 	var loc: Location = locations[active_character.cell]
+
+	if not locations.has(active_character.cell + direction):
+		return
+
 	var next_loc: Location = locations[active_character.cell + direction]
 
 	active_character.facing = direction

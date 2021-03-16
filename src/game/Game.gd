@@ -19,6 +19,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		level.interact()
 
+	if event.is_action_pressed("jump"):
+		level.jump_character()
+
 
 func _process(delta: float) -> void:
 	var direction = get_input_direction()

@@ -19,11 +19,13 @@ func toggle() -> void:
 func open() -> void:
 	anim.play("open")
 	_is_closed = false
+	is_jumpable = true
 
 
 func close() -> void:
 	anim.play("close")
 	_is_closed = true
+	is_jumpable = false
 
 
 func _is_blocking(character: Character) -> bool:

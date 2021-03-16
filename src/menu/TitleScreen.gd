@@ -10,7 +10,7 @@ onready var audio_ambience : AudioStreamPlayer = $Audio_Ambience
 onready var tween : Tween = $Tween
 
 func init_menu() -> void:
-	
+
 	menu.items = {
 		"main_menu": {
 			"type": "menu",
