@@ -75,6 +75,11 @@ _global_script_classes=[ {
 "path": "res://src/level/Location.gd"
 }, {
 "base": "Interactable",
+"class": "PressurePlate",
+"language": "GDScript",
+"path": "res://src/interactable/plate/Plate.gd"
+}, {
+"base": "Interactable",
 "class": "Switch",
 "language": "GDScript",
 "path": "res://src/interactable/switch/Switch.gd"
@@ -113,6 +118,7 @@ _global_script_class_icons={
 "LevelCamera": "",
 "Loader": "",
 "Location": "",
+"PressurePlate": "",
 "Switch": "",
 "Terminal": "",
 "Terrain": "",

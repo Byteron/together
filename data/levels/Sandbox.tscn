@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/interactable/door/HDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interactable/switch/Switch.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://data/characters/Athlete.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/interactable/crate/Crate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://data/characters/Bull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/interactable/plate/Plate.tscn" type="PackedScene" id=11]
 
 [node name="Level1" instance=ExtResource( 5 )]
 
@@ -19,12 +20,16 @@ tile_data = PoolIntArray( 0, 8, 65537, 1, 8, 65537, 2, 8, 65537, 3, 8, 65537, 4,
 [node name="Walls" parent="." index="1"]
 tile_data = PoolIntArray( 65537, 5, 1, 65538, 5, 196610, 65539, 5, 196610, 65540, 5, 2, 65541, 5, 196610, 65542, 5, 196610, 65543, 5, 2, 65544, 5, 196610, 65545, 5, 196610, 65546, 5, 2, 65547, 5, 196610, 65548, 5, 196610, 65549, 5, 2, 65550, 5, 196610, 65551, 5, 196610, 65552, 5, 2, 65553, 5, 196610, 65554, 5, 196610, 65555, 5, 3, 131073, 5, 65536, 131076, 5, 131072, 131079, 5, 65536, 131082, 5, 131072, 131085, 5, 131072, 131088, 5, 131072, 131091, 5, 65536, 196609, 5, 65536, 196615, 5, 65536, 196627, 5, 65536, 262145, 5, 65536, 262151, 5, 65536, 262157, 5, 0, 262163, 5, 65536, 327681, 5, 65537, 327682, 5, 196610, 327683, 5, 196611, 327685, 5, 196609, 327686, 5, 196610, 327687, 5, 131074, 327688, 5, 196610, 327689, 5, 196611, 327691, 5, 196609, 327692, 5, 196610, 327693, 5, 131074, 327694, 5, 196610, 327695, 5, 196611, 327697, 5, 196609, 327698, 5, 196610, 327699, 5, 65539, 393217, 5, 65536, 393235, 5, 65536, 458753, 5, 131073, 458754, 5, 196610, 458755, 5, 196610, 458756, 5, 196610, 458757, 5, 196610, 458758, 5, 196610, 458759, 5, 2, 458760, 5, 196610, 458761, 5, 196611, 458763, 5, 196609, 458764, 5, 196610, 458765, 5, 2, 458766, 5, 196610, 458767, 5, 196610, 458768, 5, 196610, 458769, 5, 196610, 458770, 5, 196610, 458771, 5, 131075, 524295, 5, 65536, 524301, 5, 65536, 589831, 5, 65536, 589837, 5, 65536, 655367, 5, 65536, 655373, 5, 65536, 720903, 5, 65537, 720904, 5, 196610, 720905, 5, 196611, 720907, 5, 196609, 720908, 5, 196610, 720909, 5, 65539, 786439, 5, 65536, 786445, 5, 65536, 851975, 5, 65536, 851981, 5, 65536, 917511, 5, 65536, 917517, 5, 65536, 983047, 5, 131073, 983048, 5, 196610, 983049, 5, 196611, 983051, 5, 196609, 983052, 5, 196610, 983053, 5, 131075 )
 
+[node name="Plate" parent="Plates" index="0" instance=ExtResource( 11 )]
+position = Vector2( 184, 216 )
+doors = [ NodePath("../../Objects/HDoor4") ]
+
 [node name="Exit" parent="Exits" index="0" instance=ExtResource( 6 )]
 position = Vector2( 168, 248 )
 
 [node name="Switch" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 152, 120 )
-doors = [ NodePath("../HDoor") ]
+doors = [ NodePath("../HDoor"), NodePath("../HDoor4") ]
 
 [node name="Switch2" parent="Objects" index="1" instance=ExtResource( 2 )]
 position = Vector2( 168, 40 )
@@ -62,7 +67,7 @@ position = Vector2( 200, 120 )
 exit = NodePath("../Vent")
 
 [node name="Crate" parent="Objects" index="11" instance=ExtResource( 9 )]
-position = Vector2( 216, 104 )
+position = Vector2( 152, 216 )
 
 [node name="Son" parent="Characters" index="0" instance=ExtResource( 3 )]
 position = Vector2( 168, 152 )
@@ -73,5 +78,5 @@ position = Vector2( 136, 152 )
 [node name="Bull" parent="Characters" index="2" instance=ExtResource( 10 )]
 position = Vector2( 200, 152 )
 
-[node name="LevelCamera" parent="." index="5"]
+[node name="LevelCamera" parent="." index="6"]
 position = Vector2( 160, 88 )

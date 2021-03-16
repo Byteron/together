@@ -14,6 +14,7 @@ var is_finished = false
 onready var character_container := $Characters
 onready var object_container := $Objects
 onready var exit_container := $Exits
+onready var plate_container := $Plates
 
 onready var camera: LevelCamera = $LevelCamera
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_init_locations()
 	_init_characters()
 	_init_exits()
+	_init_plates()
 	_init_objects()
 
 	var character = $Characters.get_child(0)
@@ -187,6 +189,14 @@ func _init_objects() -> void:
 
 		if object is Crate:
 			object.connect("interacted", self, "_on_crate_interacted")
+
+
+func _init_plates() -> void:
+	for plate in plate_container.get_children():
+		var cell = world_to_map(plate.position)
+		for vec in plate.size:
+			var loc: Location = locations[cell + vec]
+			loc.pressure_plate = plate
 
 
 func _init_exits() -> void:
