@@ -71,18 +71,8 @@ func init_menu() -> void:
 		"controls": {
 			"label": "Controls",
 			"type": "menu",
-			"children": ["key_binding_walk_left", "key_binding_walk_right", "key_binding_walk_up", "key_binding_walk_down", "key_binding_swap_character", "key_binding_interact", "key_binding_pause", "back"],
+			"children": ["key_binding_walk_up", "key_binding_walk_down", "key_binding_walk_left", "key_binding_walk_right", "key_binding_jump", "key_binding_interact", "key_binding_swap_character", "key_binding_pause", "back"],
 			"parent": "settings"
-		},
-		"key_binding_walk_left": {
-			"label": "Walk Left",
-			"type": "key_binding",
-			"action_name": "walk_left"
-		},
-		"key_binding_walk_right": {
-			"label": "Walk Right",
-			"type": "key_binding",
-			"action_name": "walk_right"
 		},
 		"key_binding_walk_up": {
 			"label": "Walk Up",
@@ -94,10 +84,25 @@ func init_menu() -> void:
 			"type": "key_binding",
 			"action_name": "walk_down"
 		},
+		"key_binding_walk_left": {
+			"label": "Walk Left",
+			"type": "key_binding",
+			"action_name": "walk_left"
+		},
+		"key_binding_walk_right": {
+			"label": "Walk Right",
+			"type": "key_binding",
+			"action_name": "walk_right"
+		},
 		"key_binding_swap_character": {
 			"label": "Swap Character",
 			"type": "key_binding",
 			"action_name": "swap_character"
+		},
+		"key_binding_jump": {
+			"label": "Jump",
+			"type": "key_binding",
+			"action_name": "jump"
 		},
 		"key_binding_interact": {
 			"label": "Interact",
