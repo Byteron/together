@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/menu/Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/hud/PauseScreen.gd" type="Script" id=2]
+
+[node name="PauseScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Darken" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_right = -40.0
+
+[node name="Menu" parent="Center" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 360.0
+margin_right = 0.0
+margin_bottom = 360.0
+
+[connection signal="back_from_root" from="Center/Menu" to="." method="_on_Menu_back_from_root"]
+[connection signal="button_pressed" from="Center/Menu" to="." method="_on_Menu_button_pressed"]
+[connection signal="variable_changed" from="Center/Menu" to="." method="_on_Menu_variable_changed"]
