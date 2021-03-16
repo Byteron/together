@@ -8,6 +8,7 @@ enum Ability {
 	HACK,
 	SQUEEZE,
 	JUMP,
+	PUSH,
 }
 
 var facing := Vector2(0, 1)

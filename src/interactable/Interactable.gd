@@ -13,8 +13,8 @@ func interact(character: Character) -> void:
 	_interact(character)
 
 
-func is_blocking(character: Character) -> bool:
-	return _is_blocking(character)
+func is_blocking(abilities: Array) -> bool:
+	return _is_blocking(abilities)
 
 
 func can_interact(character: Character) -> bool:
@@ -25,7 +25,7 @@ func _interact(character: Character) -> void:
 	pass
 
 
-func _is_blocking(character: Character) -> bool:
+func _is_blocking(abilities: Array) -> bool:
 	return true
 
 

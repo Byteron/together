@@ -79,10 +79,10 @@ func jump_character() -> void:
 
 	var next_loc: Location = locations[active_character.cell + direction]
 
-	if next_loc.is_blocking(active_character) and next_loc.is_jumpable():
+	if next_loc.is_blocking(active_character.abilities) and next_loc.is_jumpable():
 		next_loc = locations[active_character.cell + direction * 2]
 
-	if next_loc.is_blocking(active_character):
+	if next_loc.is_blocking(active_character.abilities):
 		print(next_loc.cell, " is blocked")
 		return
 
@@ -93,8 +93,6 @@ func jump_character() -> void:
 	active_character.jump_to(next_loc.position)
 
 	_check_end_conditions()
-
-
 
 
 func move_character(direction: Vector2) -> void:
@@ -110,7 +108,7 @@ func move_character(direction: Vector2) -> void:
 
 	active_character.facing = direction
 
-	if next_loc.is_blocking(active_character):
+	if next_loc.is_blocking(active_character.abilities):
 		print(next_loc.cell, " is blocked")
 		return
 
@@ -187,10 +185,39 @@ func _init_objects() -> void:
 		if object is Vent:
 			object.connect("interacted", self, "_on_vent_interacted")
 
+		if object is Crate:
+			object.connect("interacted", self, "_on_crate_interacted")
+
+
 func _init_exits() -> void:
 	for exit in exit_container.get_children():
 		var cell = world_to_map(exit.position)
 		exits.append(cell)
+
+
+func _move_interactable(cell: Vector2, direction: Vector2) -> void:
+	var loc: Location = locations[cell]
+	var interactable := loc.interactable
+
+	if not interactable.can_move() or is_finished:
+		return
+
+	if not locations.has(cell + direction):
+		return
+
+	var next_loc: Location = locations[cell + direction]
+
+	if next_loc.is_blocking([Character.Ability.MOVE]):
+		print(next_loc.cell, " is blocked")
+		return
+
+	loc.interactable = null
+	next_loc.interactable = interactable
+
+	print("interactable moved")
+	interactable.move_to(next_loc.position)
+
+	_check_end_conditions()
 
 
 func _check_end_conditions() -> void:
@@ -212,6 +239,11 @@ func _finish() -> void:
 	print("finish")
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().reload_current_scene()
+
+
+func _on_crate_interacted(cell: Vector2, direction: Vector2):
+	print("_on_crate_interacted called")
+	_move_interactable(cell, direction)
 
 
 func _on_vent_interacted(character: Character, pos: Vector2) -> void:

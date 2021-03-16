@@ -28,5 +28,5 @@ func close() -> void:
 	is_jumpable = false
 
 
-func _is_blocking(character: Character) -> bool:
+func _is_blocking(abilities: Array) -> bool:
 	return _is_closed

@@ -23,5 +23,5 @@ func is_jumpable() -> bool:
 	return terrain and terrain.is_jumpable and (not interactable or interactable.is_jumpable) and not character
 
 
-func is_blocking(character: Character) -> bool:
-	return interactable and interactable.is_blocking(character) or self.character or terrain.is_blocking(character)
+func is_blocking(abilities: Array) -> bool:
+	return interactable and interactable.is_blocking(abilities) or self.character or terrain.is_blocking(abilities)

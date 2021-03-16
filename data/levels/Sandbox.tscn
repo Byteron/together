@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/interactable/door/HDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interactable/switch/Switch.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/exit/Exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/interactable/vent/Vent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://data/characters/Athlete.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/interactable/crate/Crate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://data/characters/Bull.tscn" type="PackedScene" id=10]
 
 [node name="Level1" instance=ExtResource( 5 )]
 
@@ -59,11 +61,17 @@ exit = NodePath("../Vent2")
 position = Vector2( 200, 120 )
 exit = NodePath("../Vent")
 
+[node name="Crate" parent="Objects" index="11" instance=ExtResource( 9 )]
+position = Vector2( 216, 104 )
+
 [node name="Son" parent="Characters" index="0" instance=ExtResource( 3 )]
 position = Vector2( 168, 152 )
 
 [node name="Athlete" parent="Characters" index="1" instance=ExtResource( 8 )]
 position = Vector2( 136, 152 )
+
+[node name="Bull" parent="Characters" index="2" instance=ExtResource( 10 )]
+position = Vector2( 200, 152 )
 
 [node name="LevelCamera" parent="." index="5"]
 position = Vector2( 160, 88 )
