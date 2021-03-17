@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/ability-move.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.470588 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends PanelContainer
+class_name AbilityPanel
+
+export var AbilityItem: PackedScene = null
+
+onready var container = $VBoxContainer
+
+
+func update_info(character: Character) -> void:
+	_clear()
+
+	for ability in character.abilities:
+		var data: AbilityData = Data.abilities[ability]
+		var item: TextureRect = AbilityItem.instance()
+		item.hint_tooltip = data.hint
+		item.texture = data.texture
+		container.add_child(item)
+
+
+func _clear() -> void:
+	for child in container.get_children():
+		container.remove_child(child)
+		child.queue_free()
+"
+
+[sub_resource type="PackedScene" id=3]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "AbilityItem", "TextureRect", "margin_right", "margin_bottom", "rect_min_size", "hint_tooltip", "size_flags_horizontal", "size_flags_vertical", "texture", "expand", "stretch_mode", "__meta__" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 10, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 0 ),
+"variants": [ 64.0, 64.0, Vector2( 64, 64 ), "Can Move", 12, 12, ExtResource( 1 ), true, 1, {
+"_edit_use_anchors_": false
+} ],
+"version": 2
+}
+
+[node name="AbilityPanel" type="PanelContainer" groups=[
+"AbilityPanel",
+]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -64.0
+margin_right = 64.0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+custom_styles/panel = SubResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+AbilityItem = SubResource( 3 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0

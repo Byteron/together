@@ -4,7 +4,8 @@ class_name Game
 var level: Level = null
 
 onready var level_container := $LevelContainer
-onready var hud := $HUD
+onready var hud := $UI/HUD
+onready var ui := $UI
 
 
 func _ready() -> void:
@@ -22,7 +23,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("jump"):
 		level.jump_character()
-	
+
 	if event.is_action_pressed("pause"):
 		hud.spawn_pause_screen()
 		get_tree().paused = true

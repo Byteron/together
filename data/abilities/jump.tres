@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://assets/images/ability-jump.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/jump_v1.png" type="Texture" id=1]
 [ext_resource path="res://src/character/AbilityData.gd" type="Script" id=2]
 
 [resource]
