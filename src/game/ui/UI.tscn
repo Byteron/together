@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/game/ui/hud/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/ui/UI.gd" type="Script" id=2]
 [ext_resource path="res://src/game/ui/hud/PauseScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/ui/AbilityWarning.tscn" type="PackedScene" id=4]
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" groups=[
+"UI",
+]]
 follow_viewport_enable = true
 script = ExtResource( 2 )
+AbilityWarning = ExtResource( 4 )
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 PauseScreen = ExtResource( 3 )

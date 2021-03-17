@@ -48,8 +48,11 @@ func interact() -> void:
 		return
 
 	var loc: Location = locations[active_character.cell + active_character.facing]
+
 	if loc.can_interact(active_character):
 		loc.interact(active_character)
+	elif loc.interactable:
+		get_tree().call_group("UI", "show_ability_warning", loc.interactable.position, loc.interactable.allow_interaction[0])
 
 
 func spawn_character(character: Character) -> void:
@@ -69,7 +72,13 @@ func teleport_character(character: Character, target_cell: Vector2) -> void:
 
 
 func jump_character() -> void:
-	if not active_character.can_jump() or is_finished:
+	if is_finished:
+		return
+
+	if not active_character.can_jump() and active_character.can_move():
+		get_tree().call_group("UI", "show_ability_warning", active_character.position, Character.Ability.JUMP)
+
+	if not active_character.can_jump():
 		return
 
 	var direction = active_character.facing

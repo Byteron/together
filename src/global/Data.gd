@@ -1,5 +1,13 @@
 extends Node
 
+var ability_warnings := {
+	Character.Ability.HACK: load("res://assets/images/hack_!.png"),
+#	Character.Ability.MOVE: load("res://assets/images/move_!.png"),
+	Character.Ability.SQUEEZE: load("res://assets/images/small_!.png"),
+	Character.Ability.PUSH: load("res://assets/images/muscle_!.png"),
+	Character.Ability.JUMP: load("res://assets/images/jump_!.png"),
+}
+
 var levels := {}
 var terrains := {}
 var abilities := {}
