@@ -21,6 +21,8 @@ format = 1
 
 [node name="Exits" type="Node2D" parent="."]
 
+[node name="Collectibles" type="Node2D" parent="."]
+
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Characters" type="Node2D" parent="."]

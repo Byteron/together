@@ -11,11 +11,14 @@ var exits := []
 
 var is_finished = false
 
+var collectibles := {}
+var collected_collectibles := {}
+
 onready var character_container := $Characters
 onready var object_container := $Objects
 onready var exit_container := $Exits
 onready var plate_container := $Plates
-
+onready var collectible_container := $Collectibles
 onready var camera: LevelCamera = $LevelCamera
 
 onready var walls: TileMap = $Walls
@@ -28,6 +31,7 @@ func _ready() -> void:
 	_init_exits()
 	_init_plates()
 	_init_objects()
+	_init_collectibles()
 
 	var character = $Characters.get_child(0)
 
@@ -164,6 +168,8 @@ func _init_locations() -> void:
 			var cell := Vector2(x, y)
 			var loc := Location.new()
 
+			loc.connect("collectible_collected", self, "_on_collectible_collected")
+
 			loc.cell = cell
 			loc.position = map_to_world(cell)
 
@@ -214,6 +220,21 @@ func _init_exits() -> void:
 		exits.append(cell)
 
 
+func _init_collectibles() -> void:
+	for collectible in collectible_container.get_children():
+		var cell = world_to_map(collectible.position)
+		var loc: Location = locations[cell]
+
+		loc.collectible = collectible
+
+		if not collectibles.has(collectible.type):
+			collectibles[collectible.type] = 1
+		else:
+			collectibles[collectible.type] += 1
+
+	get_tree().call_group("CollectiblePanel", "update_info", collectibles, collected_collectibles)
+
+
 func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 	var loc: Location = locations[cell]
 	var interactable := loc.interactable
@@ -258,6 +279,15 @@ func _finish() -> void:
 	print("finish")
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().reload_current_scene()
+
+
+func _on_collectible_collected(collectible: Collectible) -> void:
+	if not collected_collectibles.has(collectible.type):
+		collected_collectibles[collectible.type] = 1
+	else:
+		collected_collectibles[collectible.type] += 1
+
+	get_tree().call_group("CollectiblePanel", "update_info", collectibles, collected_collectibles)
 
 
 func _on_crate_interacted(cell: Vector2, direction: Vector2):

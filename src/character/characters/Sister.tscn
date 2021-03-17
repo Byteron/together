@@ -2,5 +2,5 @@
 
 [ext_resource path="res://src/character/Character.tscn" type="PackedScene" id=1]
 
-[node name="Athlete" instance=ExtResource( 1 )]
-abilities = [ 0, 3 ]
+[node name="Sister" instance=ExtResource( 1 )]
+abilities = [ 0, 1 ]

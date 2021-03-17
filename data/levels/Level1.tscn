@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interactable/door/VDoor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://data/characters/Son.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/character/characters/Son.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/interactable/door/HDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interactable/switch/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/exit/Exit.tscn" type="PackedScene" id=10]
