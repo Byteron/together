@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interactable/vent/Vent.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/vent_closed.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/vent_open.png" type="Texture" id=4]
 
 [node name="Vent" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 allow_interaction = [ 2 ]
+open_tex = ExtResource( 4 )
+closed_tex = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )

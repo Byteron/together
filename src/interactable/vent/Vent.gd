@@ -1,8 +1,8 @@
 extends Interactable
 class_name Vent
 
-const OPEN_TEX = preload("res://assets/images/vent_open.png")
-const CLOSED_TEX = preload("res://assets/images/vent_closed.png")
+export var open_tex: StreamTexture = null
+export var closed_tex: StreamTexture = null
 
 signal interacted(character, pos)
 
@@ -26,12 +26,12 @@ func toggle() -> void:
 
 
 func open() -> void:
-	sprite.texture = OPEN_TEX
+	sprite.texture = open_tex
 	_is_closed = false
 
 
 func close() -> void:
-	sprite.texture = CLOSED_TEX
+	sprite.texture = closed_tex
 	_is_closed = true
 
 
