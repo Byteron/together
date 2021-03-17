@@ -24,7 +24,8 @@ func _interact(character: Character):
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	emit_signal("character_freed", Character.instance())
+	if Character:
+		emit_signal("character_freed", Character.instance())
 
 	for text in story:
 		Writer.write(text)
