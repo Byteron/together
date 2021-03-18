@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/interactable/crate/Crate.gd"
 }, {
+"base": "CanvasLayer",
+"class": "Dialogue",
+"language": "GDScript",
+"path": "res://src/dialogue/Dialogue.gd"
+}, {
 "base": "Interactable",
 "class": "Door",
 "language": "GDScript",
@@ -104,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/interactable/plate/Plate.gd"
 }, {
+"base": "Control",
+"class": "Speech",
+"language": "GDScript",
+"path": "res://src/dialogue/Speech.gd"
+}, {
 "base": "Interactable",
 "class": "Switch",
 "language": "GDScript",
@@ -118,6 +128,11 @@ _global_script_classes=[ {
 "class": "Terrain",
 "language": "GDScript",
 "path": "res://src/level/Terrain.gd"
+}, {
+"base": "Panel",
+"class": "TextBox",
+"language": "GDScript",
+"path": "res://src/dialogue/TextBox.gd"
 }, {
 "base": "Control",
 "class": "TitleScreen",
@@ -144,6 +159,7 @@ _global_script_class_icons={
 "CollectibleItem": "",
 "CollectiblePanel": "",
 "Crate": "",
+"Dialogue": "",
 "Door": "",
 "Exit": "",
 "Game": "",
@@ -154,9 +170,11 @@ _global_script_class_icons={
 "Loader": "",
 "Location": "",
 "PressurePlate": "",
+"Speech": "",
 "Switch": "",
 "Terminal": "",
 "Terrain": "",
+"TextBox": "",
 "TitleScreen": "",
 "UI": "",
 "Vent": ""

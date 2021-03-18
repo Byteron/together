@@ -14,6 +14,9 @@ var is_finished = false
 var collectibles := {}
 var collected_collectibles := {}
 
+onready var start_dialogue := $StartDialogue
+onready var end_dialogue := $EndDialogue
+
 onready var character_container := $Characters
 onready var object_container := $Objects
 onready var exit_container := $Exits
@@ -37,6 +40,8 @@ func _ready() -> void:
 
 	if character:
 		_change_character(character)
+
+	start_dialogue.start()
 
 
 func world_to_map(position: Vector2) -> Vector2:
@@ -276,8 +281,8 @@ func _check_end_conditions() -> void:
 
 
 func _finish() -> void:
-	print("finish")
-	yield(get_tree().create_timer(1.0), "timeout")
+	end_dialogue.start()
+	yield(end_dialogue, "finished")
 	get_tree().reload_current_scene()
 
 
