@@ -4,9 +4,6 @@ class_name TitleScreen
 onready var label_gwj : Label = $Label_GWJ
 onready var menu : Control = $Center/Menu
 onready var background : TextureRect = $Background
-onready var audio_tape_stop : AudioStreamPlayer = $Audio_TapeStop
-onready var audio_bgm : AudioStreamPlayer = $Audio_BGM
-onready var audio_ambience : AudioStreamPlayer = $Audio_Ambience
 onready var tween : Tween = $Tween
 
 func init_menu() -> void:
@@ -161,9 +158,10 @@ func sudden_stop() -> void:
 	tween.stop_all() # Just in case it's still moving in
 	background.hide()
 	menu.hide()
-	audio_ambience.stop()
-	audio_bgm.stop()
-	audio_tape_stop.play()
+	Music.stop()
+	SFX.stop("IntroAmbience")
+	SFX.play("TapeStop")
+
 
 func start_game() -> void:
 	sudden_stop()
@@ -176,21 +174,20 @@ func quit() -> void:
 	get_tree().quit()
 
 func do_intro() -> void:
-	tween.interpolate_property(audio_ambience, "volume_db", -40.0, -10.0, 2.0)
 	tween.interpolate_property(label_gwj, "modulate", Color.transparent, Color.white, 2.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 2.0)
 	tween.interpolate_property(background, "modulate", Color.black, Color.white, 5.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 5.0)
 	tween.interpolate_property(label_gwj, "modulate", Color.white, Color.transparent, 2.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 6.0)
 	tween.interpolate_property(menu, "modulate", Color.transparent, Color.white, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 8.0)
 	tween.start()
 	yield(get_tree().create_timer(3.0), "timeout")
-	audio_bgm.play()
+	Music.play("Intro")
 	yield(get_tree().create_timer(5.0), "timeout")
 	menu.visible = true
 	menu.active = true
 
 func _ready() -> void:
 	init_menu()
-	audio_ambience.play()
+	SFX.play("IntroAmbience", 2.0, -40, -10)
 	do_intro()
 
 func _enter_tree() -> void:
@@ -200,4 +197,3 @@ func _enter_tree() -> void:
 	$Center/Menu.active = false
 	$Label_GWJ.modulate = Color.transparent
 	$Label_GWJ.visible = true
-	$Audio_Ambience.volume_db = -40.0

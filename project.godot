@@ -109,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/interactable/plate/Plate.gd"
 }, {
+"base": "AudioStreamPlayer",
+"class": "Sound",
+"language": "GDScript",
+"path": "res://src/global/Sound.gd"
+}, {
 "base": "Control",
 "class": "Speech",
 "language": "GDScript",
@@ -170,6 +175,7 @@ _global_script_class_icons={
 "Loader": "",
 "Location": "",
 "PressurePlate": "",
+"Sound": "",
 "Speech": "",
 "Switch": "",
 "Terminal": "",
@@ -192,6 +198,7 @@ Settings="*res://src/global/Settings.gd"
 Scenes="*res://src/global/Scenes.tscn"
 Data="*res://src/global/Data.gd"
 Music="*res://src/global/Music.tscn"
+SFX="*res://src/global/SFX.tscn"
 Writer="*res://src/global/Writer.tscn"
 
 [display]
