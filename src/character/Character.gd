@@ -3,7 +3,7 @@ class_name Character
 
 signal move_finished()
 
-const MOVE_TIME := 0.28
+const MOVE_TIME := 0.2
 
 enum Ability {
 	MOVE,

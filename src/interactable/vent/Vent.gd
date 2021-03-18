@@ -8,18 +8,18 @@ signal interacted(character, pos)
 
 
 export var exit: NodePath = NodePath()
-export var _is_closed = true
+export var is_closed = true
 
 onready var exit_vent = get_node(exit)
 
 
 func _ready() -> void:
-	if not _is_closed:
+	if not is_closed:
 		open()
 
 
 func toggle() -> void:
-	if _is_closed:
+	if is_closed:
 		open()
 	else:
 		close()
@@ -27,14 +27,14 @@ func toggle() -> void:
 
 func open() -> void:
 	sprite.texture = open_tex
-	_is_closed = false
+	is_closed = false
 
 
 func close() -> void:
 	sprite.texture = closed_tex
-	_is_closed = true
+	is_closed = true
 
 
 func _interact(character: Character) -> void:
-	if exit_vent and not _is_closed:
+	if exit_vent and not exit_vent.is_closed and not is_closed:
 		emit_signal("interacted", character, exit_vent.position)

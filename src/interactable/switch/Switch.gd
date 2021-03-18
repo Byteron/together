@@ -14,7 +14,7 @@ export(Array, NodePath) var doors := []
 
 func _ready() -> void:
 	for path in doors:
-		var door: Door = get_node(path)
+		var door: Interactable = get_node(path)
 		connect("toggled", door, "toggle")
 
 

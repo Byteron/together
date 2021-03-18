@@ -10,7 +10,7 @@ onready var ui := $UI
 
 func _ready() -> void:
 #	Music.play("Solitude")
-	level = Data.levels["Sandbox"].instance()
+	level = Data.levels["Level1"].instance()
 	level_container.add_child(level)
 
 
