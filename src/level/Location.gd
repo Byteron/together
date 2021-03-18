@@ -47,18 +47,31 @@ func is_blocking(abilities: Array) -> bool:
 
 
 func _set_interactable(_interactable: Interactable) -> void:
+	if interactable:
+		interactable.disconnect("move_finished", self, "_on_interactable_move_finished")
 	interactable = _interactable
 
 	if interactable:
-		entered()
+		interactable.connect("move_finished", self, "_on_interactable_move_finished")
 	else:
 		exited()
 
 
 func _set_character(_character: Character) -> void:
+	if character:
+		character.disconnect("move_finished", self, "_on_character_move_finished")
+
 	character = _character
 
 	if character:
-		entered()
+		character.connect("move_finished", self, "_on_character_move_finished")
 	else:
 		exited()
+
+
+func _on_character_move_finished() -> void:
+	entered()
+
+
+func _on_interactable_move_finished() -> void:
+	entered()

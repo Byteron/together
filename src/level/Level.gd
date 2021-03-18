@@ -112,8 +112,6 @@ func jump_character() -> void:
 	active_character.cell = next_loc.cell
 	active_character.jump_to(next_loc.position)
 
-	_check_end_conditions()
-
 
 func move_character(direction: Vector2) -> void:
 	if not active_character.can_move() or is_finished:
@@ -138,8 +136,6 @@ func move_character(direction: Vector2) -> void:
 	active_character.cell = next_loc.cell
 	active_character.move_to(next_loc.position)
 
-	_check_end_conditions()
-
 
 func cycle_character() -> void:
 	if is_finished:
@@ -151,8 +147,11 @@ func cycle_character() -> void:
 
 
 func _change_character(character: Character) -> void:
+	if active_character:
+		active_character.disconnect("move_finished", self, "_on_character_move_finished")
 	active_character_index = character.get_index()
 	active_character = character
+	active_character.connect("move_finished", self, "_on_character_move_finished")
 	camera.target = character
 	get_tree().call_group("AbilityPanel", "update_info", character)
 
@@ -262,8 +261,6 @@ func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 	print("interactable moved")
 	interactable.move_to(next_loc.position)
 
-	_check_end_conditions()
-
 
 func _check_end_conditions() -> void:
 	var all_chars_on_exit = true
@@ -284,6 +281,10 @@ func _finish() -> void:
 	end_dialogue.start()
 	yield(end_dialogue, "finished")
 	get_tree().reload_current_scene()
+
+
+func _on_character_move_finished() -> void:
+	_check_end_conditions()
 
 
 func _on_collectible_collected(collectible: Collectible) -> void:

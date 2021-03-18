@@ -1,6 +1,8 @@
 extends Node2D
 class_name Character
 
+signal move_finished()
+
 const MOVE_TIME := 0.28
 
 enum Ability {
@@ -55,3 +57,7 @@ func can_jump() -> bool:
 
 func can_move() -> bool:
 	return not tween.is_active()
+
+
+func _on_Tween_tween_all_completed() -> void:
+	emit_signal("move_finished")

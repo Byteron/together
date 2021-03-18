@@ -8,5 +8,5 @@
 script = ExtResource( 3 )
 allow_interaction = [ 1 ]
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

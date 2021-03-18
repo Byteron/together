@@ -6,5 +6,3 @@
 [node name="Crate" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 allow_interaction = [ 4 ]
-
-[node name="Tween" type="Tween" parent="." index="2"]
