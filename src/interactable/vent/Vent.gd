@@ -28,11 +28,13 @@ func toggle() -> void:
 func open() -> void:
 	sprite.texture = open_tex
 	is_closed = false
+	SFX.play_2d("VentOpen", position)
 
 
 func close() -> void:
 	sprite.texture = closed_tex
 	is_closed = true
+	SFX.play_2d("VentOpen", position)
 
 
 func _interact(character: Character) -> void:

@@ -9,8 +9,10 @@ func play(from_position := 0.0) -> void:
 		.play(from_position)
 	else:
 		var player = self.duplicate()
+		player.singleton = false
 		player.connect("finished", self, "_on_finished", [ player ])
-		add_child(player)
+		get_tree().current_scene.add_child(player)
+		player.play()
 
 
 func _on_finished(player: AudioStreamPlayer) -> void:

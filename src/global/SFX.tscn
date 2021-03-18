@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://src/global/Sound.gd" type="Script" id=2]
 [ext_resource path="res://assets/sound/sfx/tape_stop.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sound/ambience/intro.ogg" type="AudioStream" id=4]
+[ext_resource path="res://src/global/Sound2D.gd" type="Script" id=5]
 
 [node name="SFX" type="Node"]
 script = ExtResource( 1 )
@@ -20,3 +21,7 @@ stream = ExtResource( 4 )
 volume_db = -40.0
 bus = "Ambience"
 script = ExtResource( 2 )
+
+[node name="VentOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+script = ExtResource( 5 )
