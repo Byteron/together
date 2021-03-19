@@ -4,15 +4,21 @@ class_name Terminal
 signal toggled()
 signal used()
 
-var _is_closed = true
 var _is_used = false
+
+export var is_closed := true
+
+
+func _ready() -> void:
+	if not is_closed:
+		open()
 
 
 func toggle() -> void:
 	if _is_used:
 		return
 
-	if _is_closed:
+	if is_closed:
 		open()
 	else:
 		close()
@@ -25,7 +31,7 @@ func open() -> void:
 		return
 
 	anim.play("open")
-	_is_closed = false
+	is_closed = false
 
 
 func close() -> void:
@@ -33,11 +39,11 @@ func close() -> void:
 		return
 
 	anim.play("close")
-	_is_closed = true
+	is_closed = true
 
 
 func _interact(character: Character):
-	if _is_closed or _is_used:
+	if is_closed or _is_used:
 		return
 
 	anim.play("use")

@@ -43,6 +43,7 @@ func _ready() -> void:
 	if character:
 		_change_character(character)
 
+	yield(get_tree().create_timer(0.1), "timeout")
 	emit_signal("started")
 
 

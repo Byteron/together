@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name Story
 
 const BLEND_TIME := 1.0
 const TEXT_BLEND_TIME := 1.0
@@ -11,7 +12,7 @@ onready var label: Label = $Label
 
 var toggle = false
 
-var texts := []
+export(Array, String, MULTILINE) var texts := []
 
 var _is_finished = true
 
@@ -26,10 +27,6 @@ func _input(event: InputEvent) -> void:
 		end()
 
 
-func write(text: String) -> void:
-	texts.append(text)
-
-
 func start() -> void:
 	if texts.empty():
 		return
@@ -37,7 +34,6 @@ func start() -> void:
 	get_tree().paused = true
 	_is_finished = false
 	_blend_in()
-
 
 
 func _blend_in() -> void:

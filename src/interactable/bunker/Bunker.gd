@@ -7,7 +7,6 @@ signal opened()
 var _was_opened = false
 
 export var Character: PackedScene = null
-export(Array, String) var story := []
 
 export var _is_closed := true
 
@@ -32,8 +31,3 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		emit_signal("character_freed", Character.instance())
 
 	emit_signal("opened")
-
-	for text in story:
-		Writer.write(text)
-	Writer.start()
-

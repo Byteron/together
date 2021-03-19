@@ -124,6 +124,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/dialogue/Speech.gd"
 }, {
+"base": "CanvasLayer",
+"class": "Story",
+"language": "GDScript",
+"path": "res://src/story/Story.gd"
+}, {
 "base": "Interactable",
 "class": "Switch",
 "language": "GDScript",
@@ -183,6 +188,7 @@ _global_script_class_icons={
 "Sound": "",
 "Sound2D": "",
 "Speech": "",
+"Story": "",
 "Switch": "",
 "Terminal": "",
 "Terrain": "",
@@ -205,7 +211,6 @@ Scenes="*res://src/global/Scenes.tscn"
 Data="*res://src/global/Data.gd"
 Music="*res://src/global/Music.tscn"
 SFX="*res://src/global/SFX.tscn"
-Writer="*res://src/global/Writer.tscn"
 
 [display]
 
