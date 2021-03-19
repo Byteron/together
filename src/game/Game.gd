@@ -10,7 +10,7 @@ onready var ui := $UI
 
 func _ready() -> void:
 #	Music.play("Solitude")
-	level = Data.levels["Level1"].instance()
+	level = Data.levels["Level2"].instance()
 	level_container.add_child(level)
 
 
@@ -26,7 +26,6 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("pause"):
 		hud.spawn_pause_screen()
-		get_tree().paused = true
 
 
 func _process(delta: float) -> void:

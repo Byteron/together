@@ -23,7 +23,7 @@ tracks/0/keys = {
 [node name="Bunker" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 allow_interaction = [ 1 ]
-size = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 0, -1 ), Vector2( -1, -1 ), Vector2( 1, -1 ), Vector2( 0, -2 ), Vector2( 1, -2 ), Vector2( -1, -2 ) ]
+size = [ Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 0, -1 ), Vector2( -1, -1 ), Vector2( 1, -1 ), Vector2( 0, -2 ), Vector2( 1, -2 ), Vector2( -1, -2 ) ]
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/open = SubResource( 1 )

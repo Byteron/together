@@ -1,6 +1,9 @@
 extends Node2D
 class_name Level
 
+signal started()
+signal finished()
+
 var CELL_SIZE = Vector2(16, 16)
 
 var active_character_index = 0
@@ -13,9 +16,6 @@ var is_finished = false
 
 var collectibles := {}
 var collected_collectibles := {}
-
-onready var start_dialogue := $StartDialogue
-onready var end_dialogue := $EndDialogue
 
 onready var character_container := $Characters
 onready var object_container := $Objects
@@ -43,7 +43,7 @@ func _ready() -> void:
 	if character:
 		_change_character(character)
 
-	start_dialogue.start()
+	emit_signal("started")
 
 
 func world_to_map(position: Vector2) -> Vector2:
@@ -280,8 +280,7 @@ func _check_end_conditions() -> void:
 
 
 func _finish() -> void:
-	end_dialogue.call_deferred("start")
-	yield(end_dialogue, "finished")
+	emit_signal("finished")
 	get_tree().reload_current_scene()
 
 
