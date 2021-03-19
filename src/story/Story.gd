@@ -20,6 +20,9 @@ func _ready() -> void:
 	frame.rect_scale = Vector2(1.2, 1.2)
 	backdrop.modulate.a = 0
 	label.modulate.a = 0
+	backdrop.visible = true
+	frame.visible = true
+	label.visible = true
 
 
 func _input(event: InputEvent) -> void:

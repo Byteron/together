@@ -2,11 +2,17 @@ extends Interactable
 class_name Door
 
 export var _is_closed = true
+export var _interactable := false
 
 
 func _ready() -> void:
 	if not _is_closed:
 		open()
+
+
+func _interact(character: Character) -> void:
+	if _interactable:
+		toggle()
 
 
 func toggle() -> void:

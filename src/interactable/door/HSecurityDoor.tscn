@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="HDoor" instance=ExtResource( 3 )]
+[node name="HSecurityDoor" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
 allow_interaction = [ 1 ]
 

@@ -37,7 +37,7 @@ tracks/0/keys = {
 
 [node name="VDoor" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-allow_interaction = [ 1 ]
+allow_interaction = [ 0 ]
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/close = SubResource( 1 )
