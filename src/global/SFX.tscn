@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://src/global/Sound.gd" type="Script" id=2]
 [ext_resource path="res://assets/sound/sfx/tape_stop.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sound/ambience/intro.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/global/Sound2D.gd" type="Script" id=5]
+[ext_resource path="res://assets/sound/sfx/door_open.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/sfx/door_close.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/sfx/item_get.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/sfx/vent_open.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/sfx/vent_close.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/sfx/console_open.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/sfx/lever_pull.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/sfx/pressure_plate_click.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound/sfx/crate_move.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound/sfx/bunker_open.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sound/sfx/console_close.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/sound/sfx/console_download.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sound/sfx/vent_move.ogg" type="AudioStream" id=18]
 
 [node name="SFX" type="Node"]
 script = ExtResource( 1 )
@@ -22,6 +35,69 @@ volume_db = -40.0
 bus = "Ambience"
 script = ExtResource( 2 )
 
+[node name="Collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="PressurePlate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="ConsoleDownload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Crate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="BunkerOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="BunkerClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Squeeze" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+bus = "SFX"
+script = ExtResource( 2 )
+
 [node name="VentOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+script = ExtResource( 5 )
+
+[node name="VentClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+attenuation = 0.594604
+script = ExtResource( 5 )
+
+[node name="ConsoleOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+script = ExtResource( 5 )
+
+[node name="ConsoleClose" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+attenuation = 0.659754
+script = ExtResource( 5 )
+
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+attenuation = 0.784584
 script = ExtResource( 5 )

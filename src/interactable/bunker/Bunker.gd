@@ -19,6 +19,7 @@ func _ready() -> void:
 func open() -> void:
 	anim.play("open")
 	_was_opened = true
+	SFX.play("BunkerOpen")
 
 
 func _interact(character: Character):

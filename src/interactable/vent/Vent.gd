@@ -34,11 +34,12 @@ func open() -> void:
 func close() -> void:
 	sprite.texture = closed_tex
 	is_closed = true
-	SFX.play_2d("VentOpen", position)
+	SFX.play_2d("VentClose", position)
 
 
 func _interact(character: Character) -> void:
 	if exit_vent and not exit_vent.is_closed and not is_closed:
+		SFX.play("Squeeze")
 		emit_signal("interacted", character, exit_vent.position)
 	else:
 		get_tree().call_group("UI", "show_ability_warning", position, Character.Ability.MOVE)

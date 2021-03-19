@@ -5,8 +5,7 @@ signal interacted(pos, direction)
 
 
 func _interact(character: Character) -> void:
-	print("interacted with crate")
+	SFX.play("Crate")
 	emit_signal("interacted", character.cell + character.facing,  character.facing)
-
 
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/crate_move.ogg-f757de48ad7592aa70d59fb91d8d3ae2.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/crate_move.ogg"
+dest_files=[ "res://.import/crate_move.ogg-f757de48ad7592aa70d59fb91d8d3ae2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

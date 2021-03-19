@@ -34,6 +34,7 @@ func open() -> void:
 		return
 
 	anim.play("open")
+	SFX.play_2d("ConsoleOpen", position)
 	is_closed = false
 
 
@@ -42,6 +43,7 @@ func close() -> void:
 		return
 
 	anim.play("close")
+	SFX.play_2d("ConsoleClose", position)
 	is_closed = true
 
 

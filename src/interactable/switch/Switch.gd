@@ -23,6 +23,7 @@ func _interact(__: Character) -> void:
 		deactivate()
 	else:
 		activate()
+	SFX.play("Switch")
 	emit_signal("toggled")
 
 

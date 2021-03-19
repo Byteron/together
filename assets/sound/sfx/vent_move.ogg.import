@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vent_move.ogg-212fb9050d8e2e6a7175acf2fe5f5889.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/vent_move.ogg"
+dest_files=[ "res://.import/vent_move.ogg-212fb9050d8e2e6a7175acf2fe5f5889.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

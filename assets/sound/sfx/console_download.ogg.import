@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/console_download.ogg-0be43c2f465295f14a3020720eb41b66.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/console_download.ogg"
+dest_files=[ "res://.import/console_download.ogg-0be43c2f465295f14a3020720eb41b66.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bunker_open.ogg-6ca5ae568d82b9b131baa56da0c23c57.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/bunker_open.ogg"
+dest_files=[ "res://.import/bunker_open.ogg-6ca5ae568d82b9b131baa56da0c23c57.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
