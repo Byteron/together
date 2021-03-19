@@ -6,9 +6,6 @@ signal opened()
 
 var _was_opened = false
 
-export var id := 0
-export var fragments_needed := 3
-
 export var Character: PackedScene = null
 export(Array, String) var story := []
 
@@ -26,8 +23,7 @@ func open() -> void:
 
 
 func _interact(character: Character):
-	print(character.get_fragments(id), " / ", fragments_needed)
-	if character.get_fragments(id) >= fragments_needed and not _was_opened:
+	if not _was_opened:
 		open()
 
 

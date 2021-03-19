@@ -17,26 +17,10 @@ enum Ability {
 var facing := Vector2(0, 1)
 var cell := Vector2()
 
-var fragments := {}
-
 export(Array, Ability) var abilities := []
 
 onready var tween: Tween = $Tween
 onready var sprite: Sprite = $Sprite
-
-
-func add_fragment(fragment: int) -> void:
-	if fragments.has(fragment):
-		fragments[fragment] += 1
-	else:
-		fragments[fragment] = 1
-
-
-func get_fragments(id: int) -> int:
-	if fragments.has(id):
-		return fragments[id]
-	else:
-		return 0
 
 
 func move_to(target_position: Vector2) -> void:

@@ -1,10 +1,11 @@
 extends Interactable
 class_name Terminal
 
+signal toggled()
+signal used()
+
 var _is_closed = true
 var _is_used = false
-
-export(Array, int) var fragments := []
 
 
 func toggle() -> void:
@@ -15,6 +16,8 @@ func toggle() -> void:
 		open()
 	else:
 		close()
+
+	emit_signal("toggled")
 
 
 func open() -> void:
@@ -37,8 +40,6 @@ func _interact(character: Character):
 	if _is_closed or _is_used:
 		return
 
-	for fragment in fragments:
-		character.add_fragment(fragment)
-	fragments.clear()
 	anim.play("use")
 	_is_used = true
+	emit_signal("used")
