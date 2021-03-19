@@ -26,6 +26,7 @@ onready var sprite: Sprite = $Sprite
 func move_to(target_position: Vector2) -> void:
 	tween.interpolate_property(self, "position", position, target_position, MOVE_TIME, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+	SFX.play("Step")
 
 
 func jump_to(target_position: Vector2) -> void:
