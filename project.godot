@@ -201,7 +201,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Together"
-run/main_scene="res://src/menu/TitleScreen.tscn"
+run/main_scene="res://src/game/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -211,6 +211,7 @@ Scenes="*res://src/global/Scenes.tscn"
 Data="*res://src/global/Data.gd"
 Music="*res://src/global/Music.tscn"
 SFX="*res://src/global/SFX.tscn"
+Progress="*res://src/global/Progress.gd"
 
 [display]
 

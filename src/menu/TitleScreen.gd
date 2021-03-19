@@ -166,7 +166,7 @@ func sudden_stop() -> void:
 func start_game() -> void:
 	sudden_stop()
 	yield(get_tree().create_timer(1.5), "timeout")
-	get_tree().change_scene_to(Scenes.Game)
+	Progress.next_level()
 
 func quit() -> void:
 	sudden_stop()

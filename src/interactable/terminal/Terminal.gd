@@ -1,15 +1,20 @@
 extends Interactable
 class_name Terminal
 
-signal toggled()
 signal used()
 
 var _is_used = false
 
 export var is_closed := true
 
+export(Array, NodePath) var doors := []
+
 
 func _ready() -> void:
+	for path in doors:
+		var door: Interactable = get_node(path)
+		connect("used", door, "toggle")
+
 	if not is_closed:
 		open()
 
@@ -22,8 +27,6 @@ func toggle() -> void:
 		open()
 	else:
 		close()
-
-	emit_signal("toggled")
 
 
 func open() -> void:

@@ -3,14 +3,15 @@ class_name Game
 
 var level: Level = null
 
+export var song := "Solitude"
 onready var level_container := $LevelContainer
 onready var hud := $UI/HUD
 onready var ui := $UI
 
 
 func _ready() -> void:
-#	Music.play("Solitude")
-	level = Data.levels["Level1"].instance()
+#	Music.play(song)
+	level = Data.levels["Level%d" % Progress.current_level].instance()
 	level_container.add_child(level)
 
 

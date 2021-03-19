@@ -282,7 +282,7 @@ func _check_end_conditions() -> void:
 
 func _finish() -> void:
 	emit_signal("finished")
-	get_tree().reload_current_scene()
+	Progress.next_level()
 
 
 func _on_character_move_finished() -> void:

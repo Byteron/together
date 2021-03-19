@@ -5,6 +5,8 @@ var collectible_textures := {
 	Collectible.Type.VINYL: load("res://assets/images/vinyl.png")
 }
 
+var current_level := 1
+
 var levels := {}
 var terrains := {}
 var abilities := {}

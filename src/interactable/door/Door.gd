@@ -13,6 +13,8 @@ func _ready() -> void:
 func _interact(character: Character) -> void:
 	if _interactable:
 		toggle()
+	else:
+		get_tree().call_group("UI", "show_ability_warning", position, Character.Ability.MOVE)
 
 
 func toggle() -> void:
