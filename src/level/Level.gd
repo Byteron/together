@@ -36,6 +36,8 @@ func _ready() -> void:
 	_init_objects()
 	_init_collectibles()
 
+	camera.set_limits(floors.get_used_rect().position * floors.cell_size, floors.get_used_rect().end * floors.cell_size)
+
 	var character = $Characters.get_child(0)
 
 	if character:
@@ -278,7 +280,7 @@ func _check_end_conditions() -> void:
 
 
 func _finish() -> void:
-	end_dialogue.start()
+	end_dialogue.call_deferred("start")
 	yield(end_dialogue, "finished")
 	get_tree().reload_current_scene()
 
