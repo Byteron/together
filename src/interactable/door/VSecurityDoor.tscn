@@ -46,3 +46,5 @@ anims/open = SubResource( 2 )
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
 hframes = 4
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -26,17 +26,23 @@ func toggle() -> void:
 
 func open() -> void:
 	anim.play("open")
-	_is_closed = false
-	is_jumpable = true
 	SFX.play_2d("DoorOpen", position)
 
 
 func close() -> void:
 	anim.play("close")
-	_is_closed = true
-	is_jumpable = false
+
 	SFX.play_2d("DoorClose", position)
 
 
 func _is_blocking(abilities: Array) -> bool:
 	return _is_closed
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "open":
+		_is_closed = false
+		is_jumpable = true
+	else:
+		_is_closed = true
+		is_jumpable = false
