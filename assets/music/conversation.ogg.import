@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/conversation.ogg-6cefaa6b67314bf6f121774126ebed8c.oggstr"
+
+[deps]
+
+source_file="res://assets/music/conversation.ogg"
+dest_files=[ "res://.import/conversation.ogg-6cefaa6b67314bf6f121774126ebed8c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

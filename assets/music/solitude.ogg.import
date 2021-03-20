@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/solitude.ogg-09da0934726289a16663a6b49c6ec0bb.oggstr"
+
+[deps]
+
+source_file="res://assets/music/solitude.ogg"
+dest_files=[ "res://.import/solitude.ogg-09da0934726289a16663a6b49c6ec0bb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
