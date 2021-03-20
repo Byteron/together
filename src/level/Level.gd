@@ -151,6 +151,9 @@ func move_character(direction: Vector2) -> void:
 
 
 func highlight_interactable(cell: Vector2) -> void:
+	if not locations.has(cell):
+		return
+
 	var interact_loc = locations[cell]
 
 	if interact_loc.interactable:
