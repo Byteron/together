@@ -281,14 +281,12 @@ func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 
 	var next_loc: Location = locations[cell + direction]
 
-	if next_loc.is_blocking([Character.Ability.MOVE]):
-		print(next_loc.cell, " is blocked")
+	if next_loc.interactable or next_loc.is_blocking([Character.Ability.MOVE]):
 		return
 
 	loc.interactable = null
 	next_loc.interactable = interactable
 
-	print("interactable moved")
 	interactable.move_to(next_loc.position)
 	interactable.unhighlight()
 
