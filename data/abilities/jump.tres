@@ -8,5 +8,6 @@
 script = ExtResource( 2 )
 ability = 3
 hint = "Can jump over chasms"
+color = Color( 0.988235, 0.796078, 0.141176, 1 )
 texture = ExtResource( 1 )
 warning = ExtResource( 3 )

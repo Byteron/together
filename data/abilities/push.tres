@@ -8,5 +8,6 @@
 script = ExtResource( 2 )
 ability = 4
 hint = "Can Push Crates"
+color = Color( 0.831373, 0.145098, 0.00784314, 1 )
 texture = ExtResource( 1 )
 warning = ExtResource( 3 )

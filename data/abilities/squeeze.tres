@@ -8,5 +8,6 @@
 script = ExtResource( 1 )
 ability = 2
 hint = "Can squeeze through vents"
+color = Color( 0.113725, 0.211765, 0.8, 1 )
 texture = ExtResource( 2 )
 warning = ExtResource( 3 )

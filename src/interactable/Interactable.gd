@@ -28,7 +28,8 @@ func interact(character: Character) -> void:
 
 
 func highlight() -> void:
-	sprite.material = Data.outline_material
+	sprite.material = Data.outline_material.duplicate()
+	sprite.material.set_shader_param("outline_color", Data.abilities[allow_interaction[0]].color)
 
 
 func unhighlight() -> void:
