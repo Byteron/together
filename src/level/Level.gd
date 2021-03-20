@@ -290,6 +290,7 @@ func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 
 	print("interactable moved")
 	interactable.move_to(next_loc.position)
+	interactable.unhighlight()
 
 
 func _check_end_conditions() -> void:
