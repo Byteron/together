@@ -140,6 +140,14 @@ func move_character(direction: Vector2) -> void:
 	active_character.move_to(next_loc.position)
 
 
+func select_character(number: int) -> void:
+	if is_finished:
+		return
+
+	if character_container.get_child_count() > number:
+		_change_character(character_container.get_child(number))
+
+
 func cycle_character() -> void:
 	if is_finished:
 		return

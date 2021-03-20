@@ -16,8 +16,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("swap_character"):
-		level.cycle_character()
+	_handle_character_selection(event)
 
 	if event.is_action_pressed("interact"):
 		level.interact()
@@ -34,6 +33,23 @@ func _process(delta: float) -> void:
 
 	if direction:
 		level.move_character(direction)
+
+
+func _handle_character_selection(event: InputEvent) -> void:
+	if event.is_action_pressed("swap_character"):
+		level.cycle_character()
+
+	if event.is_action_pressed("select_calvin"):
+		level.select_character(0)
+
+	if event.is_action_pressed("select_becky"):
+		level.select_character(1)
+
+	if event.is_action_pressed("select_aaron"):
+		level.select_character(2)
+
+	if event.is_action_pressed("select_kathy"):
+		level.select_character(3)
 
 
 func get_input_direction() -> Vector2:
