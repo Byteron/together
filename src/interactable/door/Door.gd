@@ -2,16 +2,24 @@ extends Interactable
 class_name Door
 
 export var _is_closed = true
-export var _interactable := false
+export var _is_interactable := false
+
+export var locked_tex: Texture = null
+export var unlocked_tex: Texture = null
+
+onready var locking_sprite: Sprite = $LockingSprite
 
 
 func _ready() -> void:
 	if not _is_closed:
 		open()
 
+	if _is_interactable:
+		locking_sprite.texture = unlocked_tex
+
 
 func _interact(character: Character) -> void:
-	if _interactable:
+	if _is_interactable:
 		toggle()
 	else:
 		get_tree().call_group("UI", "show_ability_warning", position, Character.Ability.MOVE)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/interactable/Interactable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interactable/door/Door.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gate_vertical.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/door_vertical_locked.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/door_vertical_unlocked.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close"
@@ -38,6 +40,8 @@ tracks/0/keys = {
 [node name="VDoor" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 allow_interaction = [ 0 ]
+locked_tex = ExtResource( 4 )
+unlocked_tex = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/close = SubResource( 1 )
@@ -46,5 +50,8 @@ anims/open = SubResource( 2 )
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 hframes = 4
+
+[node name="LockingSprite" type="Sprite" parent="." index="3"]
+texture = ExtResource( 4 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
