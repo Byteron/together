@@ -1,7 +1,7 @@
 extends Interactable
 class_name Door
 
-var _silent := true
+var _is_changing := false
 
 export var _is_closed = true
 export var _is_interactable := false
@@ -30,6 +30,9 @@ func _interact(character: Character) -> void:
 
 
 func toggle() -> void:
+	if _is_changing:
+		_is_closed = !_is_closed
+
 	if _is_closed:
 		open()
 	else:
@@ -38,14 +41,14 @@ func toggle() -> void:
 
 func open() -> void:
 	anim.play("open")
-
 	SFX.play_2d("DoorOpen", position)
+	_is_changing = true
 
 
 func close() -> void:
 	anim.play("close")
-
 	SFX.play_2d("DoorClose", position)
+	_is_changing = true
 
 
 func _is_blocking(abilities: Array) -> bool:
@@ -59,3 +62,4 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	else:
 		_is_closed = true
 		is_jumpable = false
+	_is_changing = false
