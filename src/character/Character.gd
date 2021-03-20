@@ -14,7 +14,7 @@ enum Ability {
 	SING,
 }
 
-var facing := Vector2(0, 1)
+var facing := Vector2(0, 1) setget _set_facing
 var cell := Vector2()
 
 export var portrait: Texture = null
@@ -43,6 +43,14 @@ func can_jump() -> bool:
 
 func can_move() -> bool:
 	return not tween.is_active()
+
+
+func _set_facing(_facing: Vector2) -> void:
+	facing = _facing
+	if facing == Vector2.LEFT:
+		sprite.flip_h = false
+	if facing == Vector2.RIGHT:
+		sprite.flip_h = true
 
 
 func _on_Tween_tween_all_completed() -> void:

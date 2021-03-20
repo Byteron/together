@@ -125,6 +125,11 @@ func move_character(direction: Vector2) -> void:
 
 	var loc: Location = locations[active_character.cell]
 
+	var interact_loc: Location = locations[loc.cell + active_character.facing]
+
+	if interact_loc.interactable:
+		interact_loc.interactable.unhighlight()
+
 	if not locations.has(active_character.cell + direction):
 		return
 
@@ -133,7 +138,7 @@ func move_character(direction: Vector2) -> void:
 	active_character.facing = direction
 
 	if next_loc.is_blocking(active_character.abilities):
-		print(next_loc.cell, " is blocked")
+		highlight_interactable(loc.cell + active_character.facing)
 		return
 
 	loc.character = null
@@ -142,6 +147,14 @@ func move_character(direction: Vector2) -> void:
 	active_character.cell = next_loc.cell
 	active_character.move_to(next_loc.position)
 
+	highlight_interactable(next_loc.cell + active_character.facing)
+
+
+func highlight_interactable(cell: Vector2) -> void:
+	var interact_loc = locations[cell]
+
+	if interact_loc.interactable:
+		interact_loc.interactable.highlight()
 
 func select_character(number: int) -> void:
 	if is_finished:

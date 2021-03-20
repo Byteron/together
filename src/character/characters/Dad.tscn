@@ -31,4 +31,5 @@ anims/idle = SubResource( 1 )
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
+offset = Vector2( 0, -5 )
 hframes = 3

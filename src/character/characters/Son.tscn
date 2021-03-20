@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/son_idle.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/portraits/Son.png" type="Texture" id=3]
+[ext_resource path="res://assets/shaders/outline.tres" type="Material" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -30,7 +31,7 @@ autoplay = "idle"
 anims/idle = SubResource( 1 )
 
 [node name="Sprite" parent="." index="2"]
+material = ExtResource( 4 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -4 )
+offset = Vector2( 0, -5 )
 hframes = 3
-frame = 2

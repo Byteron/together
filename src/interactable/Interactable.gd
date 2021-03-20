@@ -27,6 +27,14 @@ func interact(character: Character) -> void:
 	_interact(character)
 
 
+func highlight() -> void:
+	sprite.material = Data.outline_material
+
+
+func unhighlight() -> void:
+	sprite.material = null
+
+
 func is_blocking(abilities: Array) -> bool:
 	return _is_blocking(abilities)
 
