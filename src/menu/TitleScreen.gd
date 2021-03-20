@@ -6,6 +6,8 @@ onready var menu : Control = $Center/Menu
 onready var background : TextureRect = $Background
 onready var tween : Tween = $Tween
 
+onready var skipped_intro : bool = false
+
 func init_menu() -> void:
 
 	menu.items = {
@@ -182,8 +184,9 @@ func do_intro() -> void:
 	yield(get_tree().create_timer(3.0), "timeout")
 	Music.play("Intro")
 	yield(get_tree().create_timer(5.0), "timeout")
-	menu.visible = true
-	menu.active = true
+	if not skipped_intro:
+		menu.visible = true
+		menu.active = true
 
 func _input(event : InputEvent) -> void:
 	if not tween.is_active():
@@ -195,6 +198,7 @@ func _input(event : InputEvent) -> void:
 		menu.modulate = Color.white
 		menu.visible = true
 		menu.active = true
+		skipped_intro = true
 
 func _ready() -> void:
 	init_menu()
