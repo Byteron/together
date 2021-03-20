@@ -42,6 +42,7 @@ func close() -> void:
 func _interact(character: Character) -> void:
 	if exit_vent and not exit_vent.is_closed and not is_closed:
 		SFX.play("Squeeze")
+		unhighlight()
 		emit_signal("interacted", character, exit_vent.position)
 	else:
 		get_tree().call_group("UI", "show_ability_warning", position, Character.Ability.MOVE)
