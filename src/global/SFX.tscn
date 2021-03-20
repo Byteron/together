@@ -100,7 +100,7 @@ stream = ExtResource( 11 )
 script = ExtResource( 5 )
 
 [node name="ConsoleClose" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 16 )
 script = ExtResource( 5 )
 
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="."]
