@@ -1,6 +1,8 @@
 extends Interactable
 class_name Door
 
+var _silent := true
+
 export var _is_closed = true
 export var _is_interactable := false
 
@@ -12,7 +14,9 @@ onready var locking_sprite: Sprite = $LockingSprite
 
 func _ready() -> void:
 	if not _is_closed:
+		SFX.mute()
 		open()
+		SFX.unmute()
 
 	if _is_interactable:
 		locking_sprite.texture = unlocked_tex
@@ -34,6 +38,7 @@ func toggle() -> void:
 
 func open() -> void:
 	anim.play("open")
+
 	SFX.play_2d("DoorOpen", position)
 
 

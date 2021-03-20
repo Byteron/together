@@ -16,7 +16,9 @@ func _ready() -> void:
 		connect("used", door, "toggle")
 
 	if not is_closed:
+		SFX.mute()
 		open()
+		SFX.unmute()
 
 
 func toggle() -> void:

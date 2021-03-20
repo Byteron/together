@@ -15,7 +15,9 @@ onready var exit_vent = get_node(exit)
 
 func _ready() -> void:
 	if not is_closed:
+		SFX.mute()
 		open()
+		SFX.unmute()
 
 
 func toggle() -> void:

@@ -2,7 +2,15 @@ extends Node
 
 var sfx := {}
 
+var _is_muted := false
+
 onready var tween: Tween = $Tween
+
+func mute() -> void:
+	_is_muted = true
+
+func unmute() -> void:
+	_is_muted = false
 
 
 func _ready() -> void:
@@ -11,6 +19,9 @@ func _ready() -> void:
 
 
 func play(sfx_name: String, fade_in := 0.0, start_db := -40, end_db := -10) -> void:
+	if _is_muted:
+		return
+
 	if sfx.has(sfx_name):
 		var player: Sound = sfx[sfx_name]
 
@@ -22,6 +33,9 @@ func play(sfx_name: String, fade_in := 0.0, start_db := -40, end_db := -10) -> v
 
 
 func play_2d(sfx_name: String, position: Vector2) -> void:
+	if _is_muted:
+		return
+
 	if sfx.has(sfx_name):
 		var player: Sound2D = sfx[sfx_name]
 		player.play_at(position)
