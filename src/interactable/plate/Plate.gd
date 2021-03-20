@@ -20,6 +20,7 @@ func _ready() -> void:
 
 
 func toggle() -> void:
+	print("")
 	if _is_active:
 		deactivate()
 	else:
