@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/game/ui/hud/CharacterPanel.gd" type="Script" id=1]
+[ext_resource path="res://src/game/ui/hud/CharacterItem.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.470588 )
+
+[node name="CharacterPanel" type="PanelContainer" groups=[
+"CharacterPanel",
+]]
+margin_right = 14.0
+margin_bottom = 14.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+CharacterItem = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 14.0

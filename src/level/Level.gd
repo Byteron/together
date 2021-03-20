@@ -43,6 +43,8 @@ func _ready() -> void:
 	if character:
 		_change_character(character)
 
+	get_tree().call_group("CharacterPanel", "update_info", character_container.get_children())
+
 	yield(get_tree().create_timer(0.1), "timeout")
 	emit_signal("started")
 
@@ -69,6 +71,7 @@ func interact() -> void:
 
 func spawn_character(character: Character) -> void:
 	character_container.add_child(character)
+	get_tree().call_group("CharacterPanel", "update_info", character_container.get_children())
 
 
 func teleport_character(character: Character, target_cell: Vector2) -> void:

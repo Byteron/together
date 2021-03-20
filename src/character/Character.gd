@@ -17,6 +17,7 @@ enum Ability {
 var facing := Vector2(0, 1)
 var cell := Vector2()
 
+export var portrait: Texture = null
 export(Array, Ability) var abilities := []
 
 onready var tween: Tween = $Tween
