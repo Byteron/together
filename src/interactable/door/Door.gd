@@ -42,12 +42,16 @@ func toggle() -> void:
 func open() -> void:
 	anim.play("open")
 	SFX.play_2d("DoorOpen", position)
+
 	_is_changing = true
 
 
 func close() -> void:
 	anim.play("close")
 	SFX.play_2d("DoorClose", position)
+	_is_closed = true
+	is_jumpable = false
+
 	_is_changing = true
 
 
@@ -59,7 +63,5 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "open":
 		_is_closed = false
 		is_jumpable = true
-	else:
-		_is_closed = true
-		is_jumpable = false
+
 	_is_changing = false
