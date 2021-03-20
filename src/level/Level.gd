@@ -66,7 +66,7 @@ func interact() -> void:
 	if loc.can_interact(active_character):
 		loc.interact(active_character)
 	elif loc.interactable:
-		get_tree().call_group("UI", "show_ability_warning", loc.interactable.position, loc.interactable.allow_interaction[0])
+		get_tree().call_group("UI", "show_ability_warning", loc.interactable.position, loc.interactable.get_allowed_interaction())
 
 
 func spawn_character(character: Character) -> void:

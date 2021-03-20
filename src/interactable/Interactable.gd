@@ -28,8 +28,10 @@ func interact(character: Character) -> void:
 
 
 func highlight() -> void:
+	var color = Data.abilities[get_allowed_interaction()].color
+
 	sprite.material = Data.outline_material.duplicate()
-	sprite.material.set_shader_param("outline_color", Data.abilities[allow_interaction[0]].color)
+	sprite.material.set_shader_param("outline_color", color)
 
 
 func unhighlight() -> void:
@@ -39,6 +41,9 @@ func unhighlight() -> void:
 func is_blocking(abilities: Array) -> bool:
 	return _is_blocking(abilities)
 
+
+func get_allowed_interaction() -> int:
+	return allow_interaction[0] if allow_interaction else Character.Ability.MOVE
 
 func can_interact(character: Character) -> bool:
 	return _can_interact(character)

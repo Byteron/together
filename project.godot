@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/Game.gd"
 }, {
+"base": "Door",
+"class": "HSecurityDoor",
+"language": "GDScript",
+"path": "res://src/interactable/door/HSecurityDoor.gd"
+}, {
 "base": "CanvasLayer",
 "class": "HUD",
 "language": "GDScript",
@@ -178,6 +183,7 @@ _global_script_class_icons={
 "Door": "",
 "Exit": "",
 "Game": "",
+"HSecurityDoor": "",
 "HUD": "",
 "Interactable": "",
 "Level": "",
