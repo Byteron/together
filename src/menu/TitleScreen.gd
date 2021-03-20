@@ -185,6 +185,17 @@ func do_intro() -> void:
 	menu.visible = true
 	menu.active = true
 
+func _input(event : InputEvent) -> void:
+	if not tween.is_active():
+		return
+	if event.is_action_pressed("ui_accept"):
+		tween.stop_all()
+		label_gwj.modulate = Color.transparent
+		background.modulate = Color.white
+		menu.modulate = Color.white
+		menu.visible = true
+		menu.active = true
+
 func _ready() -> void:
 	init_menu()
 	SFX.play("IntroAmbience", 2.0, -40, -10)
