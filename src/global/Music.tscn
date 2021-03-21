@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/global/Music.gd" type="Script" id=1]
-[ext_resource path="res://assets/music/solitude.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/title.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/music/intro.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/music/conversation.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/music/epilogue.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/ingame3.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/music/ingame1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/music/ingame2.ogg" type="AudioStream" id=8]
 
 [node name="Music" type="Node"]
 script = ExtResource( 1 )
@@ -26,7 +29,22 @@ stream = ExtResource( 3 )
 volume_db = -10.0
 bus = "BGM"
 
-[node name="Solitude" type="AudioStreamPlayer" parent="."]
+[node name="Ingame1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "BGM"
+
+[node name="Ingame2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+bus = "BGM"
+
+[node name="Ingame3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+bus = "BGM"
+
+[node name="Title" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -10.0
 bus = "BGM"

@@ -183,7 +183,7 @@ func do_intro() -> void:
 	tween.start()
 	yield(get_tree().create_timer(3.0), "timeout")
 	if not skipped_intro:
-		Music.play("Intro")
+		Music.play("Title")
 	yield(get_tree().create_timer(5.0), "timeout")
 	if not skipped_intro:
 		menu.visible = true
