@@ -72,20 +72,24 @@ doors = [ NodePath("../HDoor") ]
 
 [node name="HDoor2" parent="Objects" index="11" instance=ExtResource( 5 )]
 position = Vector2( 72, 88 )
+_is_interactable = true
 
 [node name="HDoor3" parent="Objects" index="12" instance=ExtResource( 5 )]
 position = Vector2( 168, 248 )
+_is_interactable = true
 
 [node name="HDoor4" parent="Objects" index="13" instance=ExtResource( 5 )]
 position = Vector2( 264, 200 )
+_is_interactable = true
 
 [node name="HDoor5" parent="Objects" index="14" instance=ExtResource( 5 )]
 position = Vector2( 264, 56 )
+_is_interactable = true
 
 [node name="Son" parent="Characters" index="0" instance=ExtResource( 3 )]
 position = Vector2( 72, 56 )
 
-[node name="LevelCamera" parent="." index="7"]
+[node name="LevelCamera" parent="." index="8"]
 position = Vector2( 160, 88 )
 
 [node name="StartDialogue" parent="Dialogues" index="0" instance=ExtResource( 6 )]
