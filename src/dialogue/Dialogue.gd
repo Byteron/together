@@ -3,6 +3,8 @@ class_name Dialogue
 
 signal finished()
 
+export (bool) var interrupt_music = true
+
 var current := -1
 var speech: Speech = null
 
@@ -19,7 +21,8 @@ func start() -> void:
 
 
 	if has_next():
-		Music.play("Conversation", 0.5)
+		if interrupt_music:
+			Music.play("Conversation", 0.5)
 		next()
 	else:
 		_skipped = true
@@ -38,7 +41,7 @@ func next() -> void:
 
 
 func finish() -> void:
-	if not _skipped:
+	if not _skipped and interrupt_music:
 		Music.play(Music.previous_song, 0.5)
 
 	get_tree().paused = false

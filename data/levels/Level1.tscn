@@ -111,32 +111,68 @@ texture = ExtResource( 8 )
 position = Vector2( 160, 88 )
 
 [node name="StartDialogue" parent="Dialogues" index="0" instance=ExtResource( 6 )]
+interrupt_music = false
 
 [node name="Speech" parent="Dialogues/StartDialogue" index="0" instance=ExtResource( 7 )]
 speaker = "Calvin"
 portrait = ExtResource( 11 )
+flip_portrait = true
 lines = [ "...I'm hungry.", "I've waited long enough. It's gotta be safe to go outside now, right?" ]
 start_delay = 2.0
 
 [node name="VentDialogue" parent="Dialogues" index="1" instance=ExtResource( 6 )]
+interrupt_music = false
 
 [node name="Speech" parent="Dialogues/VentDialogue" index="0" instance=ExtResource( 7 )]
 speaker = "Calvin"
 portrait = ExtResource( 11 )
+flip_portrait = true
 lines = [ "Looks kinda cramped, but I reckon I can squeeze in!", "Becky always says the reason I can fit in small places is 'cos I've got a small head.", "It's a compliment. I think." ]
 
 [node name="VinylDialogue" parent="Dialogues" index="2" instance=ExtResource( 6 )]
+interrupt_music = false
 
 [node name="Speech" parent="Dialogues/VinylDialogue" index="0" instance=ExtResource( 7 )]
 speaker = "Calvin"
 portrait = ExtResource( 11 )
+flip_portrait = true
 lines = [ "One of Dad's records! He loves listening to these." ]
 
 [node name="EndDialogue" parent="Dialogues" index="3" instance=ExtResource( 6 )]
+interrupt_music = false
 
-[node name="Speech" parent="Dialogues/EndDialogue" index="0" instance=ExtResource( 7 )]
+[node name="Speech1" parent="Dialogues/EndDialogue" index="0" instance=ExtResource( 7 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "This must be the door! Right, now to...", "Wait, password? Erm...", "Hey, door! Open! Open sesame! Rosebud! 0451! ...Please?" ]
+
+[node name="Speech2" parent="Dialogues/EndDialogue" index="1" instance=ExtResource( 7 )]
+speaker = ""
+portrait = null
+lines = [ "BE-BEEP" ]
+
+[node name="Speech3" parent="Dialogues/EndDialogue" index="2" instance=ExtResource( 7 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Aw, c'mon..." ]
+
+[node name="Speech4" parent="Dialogues/EndDialogue" index="3" instance=ExtResource( 7 )]
+speaker = ""
+portrait = null
+lines = [ "*CLANK*
+*TINK*
+*WHIRR*" ]
+
+[node name="Speech5" parent="Dialogues/EndDialogue" index="4" instance=ExtResource( 7 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Huh? Hah! I did it! Look out, world, here comes Calvin, master escapo-" ]
 
 [connection signal="finished" from="." to="Dialogues/EndDialogue" method="start"]
 [connection signal="started" from="." to="Dialogues/StartDialogue" method="start"]
-[connection signal="toggled" from="Plates/CutsceneTrigger1" to="Dialogues/VentDialogue/Speech" method="start"]
-[connection signal="toggled" from="Plates/CutsceneTrigger2" to="Dialogues/VinylDialogue/Speech" method="start"]
+[connection signal="toggled" from="Plates/CutsceneTrigger1" to="Dialogues/VentDialogue" method="start"]
+[connection signal="toggled" from="Plates/CutsceneTrigger2" to="Dialogues/VinylDialogue" method="start"]
+[connection signal="finished" from="Dialogues/EndDialogue" to="." method="next_level"]

@@ -143,22 +143,68 @@ is_closed = false
 position = Vector2( -40, 40 )
 
 [node name="Story" parent="Stories" index="0" instance=ExtResource( 10 )]
-texts = [ "Two hours earlier..." ]
+texts = [ "Mere minutes earlier,
+outside the bunker..." ]
 
-[node name="FreeCalvinDialogue" parent="Dialogues" index="0" instance=ExtResource( 7 )]
+[node name="IntroDialogue" parent="Dialogues" index="0" instance=ExtResource( 7 )]
+interrupt_music = false
+
+[node name="Speech" parent="Dialogues/IntroDialogue" index="0" instance=ExtResource( 6 )]
+lines = [ "This is what they call \"high security\"? Like... boring.", "Well, whatever. Just need to find whoever's inside and then we can, I'unno, find something better to do with our lives." ]
+
+[node name="FreeCalvinDialogue" parent="Dialogues" index="1" instance=ExtResource( 7 )]
 
 [node name="Speech" parent="Dialogues/FreeCalvinDialogue" index="0" instance=ExtResource( 6 )]
 speaker = "Calvin"
 portrait = ExtResource( 11 )
 flip_portrait = true
-lines = [ "Hii!" ]
+lines = [ "-logist! Huh...?" ]
 
 [node name="Speech2" parent="Dialogues/FreeCalvinDialogue" index="1" instance=ExtResource( 6 )]
-lines = [ "Oh god..." ]
+lines = [ "Look out, world. Here comes Calvin, bonehead extraordinaire." ]
 
-[node name="EndDialogue" parent="Dialogues" index="1" instance=ExtResource( 7 )]
+[node name="Speech3" parent="Dialogues/FreeCalvinDialogue" index="2" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Becky! You... you got me out of there?" ]
+
+[node name="Speech4" parent="Dialogues/FreeCalvinDialogue" index="3" instance=ExtResource( 6 )]
+lines = [ "I mean, duh. You were just, what, smashing every button? And you thought that would work?" ]
+
+[node name="Speech5" parent="Dialogues/FreeCalvinDialogue" index="4" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Yup. Well, I mean, I was going to try doing what you always do, but I don't think it would have worked." ]
+
+[node name="Speech6" parent="Dialogues/FreeCalvinDialogue" index="5" instance=ExtResource( 6 )]
+lines = [ "Wait... what do you mean, \"what I always do\"?" ]
+
+[node name="Speech7" parent="Dialogues/FreeCalvinDialogue" index="6" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Swearing at it when it didn't do what I wanted it to." ]
+
+[node name="Speech8" parent="Dialogues/FreeCalvinDialogue" index="7" instance=ExtResource( 6 )]
+lines = [ "Hey! Hacking a computer isn't just mashing buttons and swearing!" ]
+
+[node name="Speech9" parent="Dialogues/FreeCalvinDialogue" index="8" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "It isn't? Then what did you do?" ]
+
+[node name="Speech10" parent="Dialogues/FreeCalvinDialogue" index="9" instance=ExtResource( 6 )]
+lines = [ "I- ju- ", "You wouldn't get it.", "'Cause you're lame." ]
+
+[node name="EndDialogue" parent="Dialogues" index="2" instance=ExtResource( 7 )]
+interrupt_music = false
 
 [node name="Speech" parent="Dialogues/EndDialogue" index="0" instance=ExtResource( 6 )]
 
 [connection signal="finished" from="." to="Dialogues/EndDialogue" method="start"]
 [connection signal="started" from="." to="Stories/Story" method="start"]
+[connection signal="opened" from="Objects/Bunker" to="Dialogues/FreeCalvinDialogue" method="start"]
+[connection signal="finished" from="Stories/Story" to="Dialogues/IntroDialogue" method="start"]
