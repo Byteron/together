@@ -12,4 +12,4 @@ dest_files=[ "res://.import/conversation.ogg-6cefaa6b67314bf6f121774126ebed8c.og
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=12.12
