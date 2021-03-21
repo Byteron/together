@@ -7,7 +7,7 @@ onready var container: HBoxContainer = $HBoxContainer
 
 func update_info(characters: Array) -> void:
 	for child in container.get_children():
-		remove_child(child)
+		container.remove_child(child)
 		child.queue_free()
 
 	for character in characters:
