@@ -2,10 +2,6 @@ extends Node
 
 var outline_material: Material = preload("res://assets/shaders/outline.tres")
 
-var collectible_textures := {
-	Collectible.Type.VINYL: load("res://assets/images/vinyl.png")
-}
-
 var current_level := 1
 
 var levels := {}

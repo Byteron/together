@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/interactable/Interactable.gd"
 }, {
-"base": "Node2D",
+"base": "Collectible",
 "class": "Junk",
 "language": "GDScript",
 "path": "res://src/collectible/collectibles/Junk.gd"

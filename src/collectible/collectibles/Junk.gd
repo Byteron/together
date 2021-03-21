@@ -1,4 +1,4 @@
-extends Node2D
+extends Collectible
 class_name Junk
 
 onready var sprite: Sprite = $Sprite

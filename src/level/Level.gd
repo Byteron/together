@@ -278,8 +278,6 @@ func _init_collectibles() -> void:
 		else:
 			collectibles[collectible.type] += 1
 
-	get_tree().call_group("CollectiblePanel", "update_info", collectibles, collected_collectibles)
-
 
 func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 	var loc: Location = locations[cell]
@@ -332,8 +330,6 @@ func _on_collectible_collected(collectible: Collectible) -> void:
 		collected_collectibles[collectible.type] = 1
 	else:
 		collected_collectibles[collectible.type] += 1
-
-	get_tree().call_group("CollectiblePanel", "update_info", collectibles, collected_collectibles)
 
 
 func _on_brittle_floor_destroyed(cell: Vector2) -> void:
