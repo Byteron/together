@@ -1,6 +1,8 @@
 extends Control
 
 onready var menu : Control = $Center/Menu
+onready var blackout : ColorRect = $Blackout
+onready var tween : Tween = $Tween
 
 func init_menu() -> void:
 	menu.items = {
@@ -145,11 +147,10 @@ func _on_Menu_button_pressed(slug : String) -> void:
 	match slug:
 		"resume":
 			resume()
-		#"credits":
-			#open_credits()
-		#"quit":
-			#quit()
-
+		"restart_level":
+			restart_level()
+		"back_to_title":
+			back_to_title()
 
 func _on_Menu_back_from_root() -> void:
 	resume()
@@ -157,6 +158,22 @@ func _on_Menu_back_from_root() -> void:
 func resume() -> void:
 	get_tree().paused = false
 	self.queue_free()
+
+func restart_level() -> void:
+	menu.active = false
+	tween.interpolate_property(blackout, "modulate", Color.transparent, Color.white, 1.0)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func back_to_title() -> void:
+	menu.active = false
+	tween.interpolate_property(blackout, "modulate", Color.transparent, Color.white, 1.0)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	get_tree().paused = false
+	get_tree().change_scene("res://src/menu/TitleScreen.tscn")
 
 func _ready() -> void:
 	init_menu()
