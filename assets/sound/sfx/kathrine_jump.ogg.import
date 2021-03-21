@@ -11,5 +11,5 @@ dest_files=[ "res://.import/kathrine_jump.ogg-0da0dc36d0d406188448775b1995c286.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
