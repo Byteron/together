@@ -1,12 +1,20 @@
 extends Control
+class_name End
 
 onready var dialogue: Dialogue = $Dialogue
 onready var speech: Speech = $Dialogue/Speech
 
 
 func _ready() -> void:
-
-	var time_text := "Nice job not wasting my time there."
+	var time_text := ""
+	if Progress.time < 10 * 60:
+		time_text = "Not gonna lie, that's faster than the devs could do it. So, good job having better things to do with your life. Nerd."
+	elif Progress.time < 20 * 60:
+		time_text = "Nice job not wasting my time there."
+	elif Progress.time < 30 * 60:
+		time_text = "So I'm guessing you're not a triathlete or anything."
+	else:
+		time_text = "Like, seriously? I've got places to be, y'know."
 
 
 	var collectible_text := ""

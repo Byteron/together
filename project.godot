@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/interactable/door/Door.gd"
 }, {
+"base": "Control",
+"class": "End",
+"language": "GDScript",
+"path": "res://src/story/End.gd"
+}, {
 "base": "Node2D",
 "class": "Exit",
 "language": "GDScript",
@@ -192,6 +197,7 @@ _global_script_class_icons={
 "Crate": "",
 "Dialogue": "",
 "Door": "",
+"End": "",
 "Exit": "",
 "Game": "",
 "HSecurityDoor": "",
