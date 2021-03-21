@@ -238,16 +238,16 @@ position = Vector2( 40, -520 )
 doors = [ NodePath("../HSecurityDoor2") ]
 
 [node name="Sister" parent="Characters" index="0" instance=ExtResource( 9 )]
-position = Vector2( -8, -112 )
+position = Vector2( 184, -432 )
 
 [node name="Dad" parent="Characters" index="1" instance=ExtResource( 16 )]
-position = Vector2( -8, -128 )
+position = Vector2( 184, -416 )
 
 [node name="Son" parent="Characters" index="2" instance=ExtResource( 4 )]
-position = Vector2( 8, -112 )
+position = Vector2( 200, -432 )
 
 [node name="Mum" parent="Characters" index="3" instance=ExtResource( 13 )]
-position = Vector2( 8, -128 )
+position = Vector2( 200, -416 )
 
 [node name="LevelCamera" parent="." index="9"]
 visible = false

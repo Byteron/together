@@ -34,8 +34,8 @@ func get_collectible_percent() -> float:
 
 func next_level() -> void:
 	current_level += 1
-
-	if current_level < Data.levels.size():
+	get_tree().paused = false
+	if current_level < 6:
 		get_tree().change_scene_to(Scenes.Game)
 	else:
-		get_tree().change_scene_to(Scenes.EndCredits)
+		get_tree().change_scene("res://src/story/EndCredits.tscn")
