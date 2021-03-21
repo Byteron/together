@@ -14,8 +14,7 @@ var exits := []
 
 var is_finished = false
 
-var collectibles := {}
-var collected_collectibles := {}
+var collected_collectibles := 0
 
 onready var character_container := $Characters
 onready var object_container := $Objects
@@ -275,11 +274,6 @@ func _init_collectibles() -> void:
 
 		loc.collectible = collectible
 
-		if not collectibles.has(collectible.type):
-			collectibles[collectible.type] = 1
-		else:
-			collectibles[collectible.type] += 1
-
 
 func _move_interactable(cell: Vector2, direction: Vector2) -> void:
 	var loc: Location = locations[cell]
@@ -320,6 +314,8 @@ func _check_end_conditions() -> void:
 
 func _finish() -> void:
 	emit_signal("finished")
+	Progress.set_max_collectibles(collectible_container.get_child_count())
+	Progress.set_collectibles(collected_collectibles)
 	Progress.next_level()
 
 
@@ -328,10 +324,7 @@ func _on_character_move_finished() -> void:
 
 
 func _on_collectible_collected(collectible: Collectible) -> void:
-	if not collected_collectibles.has(collectible.type):
-		collected_collectibles[collectible.type] = 1
-	else:
-		collected_collectibles[collectible.type] += 1
+	collected_collectibles += 1
 
 
 func _on_brittle_floor_destroyed(cell: Vector2) -> void:
