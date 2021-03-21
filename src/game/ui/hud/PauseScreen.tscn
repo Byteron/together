@@ -30,6 +30,17 @@ margin_top = 360.0
 margin_right = 0.0
 margin_bottom = 360.0
 
+[node name="Blackout" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="back_from_root" from="Center/Menu" to="." method="_on_Menu_back_from_root"]
 [connection signal="button_pressed" from="Center/Menu" to="." method="_on_Menu_button_pressed"]
 [connection signal="variable_changed" from="Center/Menu" to="." method="_on_Menu_variable_changed"]
