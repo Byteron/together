@@ -9,7 +9,7 @@ export var _is_interactable := false
 export var locked_tex: Texture = null
 export var unlocked_tex: Texture = null
 
-onready var locking_sprite: Sprite = $LockingSprite
+onready var locking_sprite: Sprite = get_node_or_null("LockingSprite")
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func _ready() -> void:
 		locking_sprite.texture = unlocked_tex
 
 
-func _interact(character: Character) -> void:
+func _interact(__: Character) -> void:
 	if _is_interactable:
 		toggle()
 	else:
@@ -55,7 +55,7 @@ func close() -> void:
 	_is_changing = true
 
 
-func _is_blocking(abilities: Array) -> bool:
+func _is_blocking(__: Array) -> bool:
 	return _is_closed
 
 

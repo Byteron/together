@@ -22,12 +22,12 @@ func open() -> void:
 	SFX.play("BunkerOpen")
 
 
-func _interact(character: Character):
+func _interact(__: Character):
 	if not _was_opened:
 		open()
 
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(__: String) -> void:
 	if Character:
 		emit_signal("character_freed", Character.instance())
 

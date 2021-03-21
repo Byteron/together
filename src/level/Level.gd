@@ -341,13 +341,12 @@ func _on_brittle_floor_destroyed(cell: Vector2) -> void:
 
 
 func _on_crate_interacted(cell: Vector2, direction: Vector2):
-	print("_on_crate_interacted called")
 	_move_interactable(cell, direction)
 
 
 func _on_vent_interacted(character: Character, pos: Vector2) -> void:
 	var cell = world_to_map(pos)
-	teleport_character(active_character, cell)
+	teleport_character(character, cell)
 
 
 func _on_character_freed(character: Character, cell: Vector2) -> void:

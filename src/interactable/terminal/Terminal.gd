@@ -49,7 +49,7 @@ func close() -> void:
 	is_closed = true
 
 
-func _interact(character: Character):
+func _interact(__: Character):
 	if is_closed or _is_used:
 		return
 

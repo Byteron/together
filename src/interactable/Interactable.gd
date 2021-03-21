@@ -50,11 +50,11 @@ func can_interact(character: Character) -> bool:
 	return _can_interact(character)
 
 
-func _interact(character: Character) -> void:
+func _interact(_character: Character) -> void:
 	pass
 
 
-func _is_blocking(abilities: Array) -> bool:
+func _is_blocking(_abilities: Array) -> bool:
 	return true
 
 

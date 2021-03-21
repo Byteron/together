@@ -27,5 +27,5 @@ func exit() -> void:
 		emit_signal("destroyed")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(__: String) -> void:
 	queue_free()
