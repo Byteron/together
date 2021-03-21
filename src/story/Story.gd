@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name Story
 
+signal finished()
+
 const BLEND_TIME := 1.0
 const TEXT_BLEND_TIME := 1.0
 const TEXT_SHOW_TIME := 2.0
@@ -87,3 +89,4 @@ func _on_Tween_tween_all_completed() -> void:
 		end()
 	else:
 		get_tree().paused = false
+		emit_signal("finished")
