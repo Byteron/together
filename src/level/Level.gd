@@ -163,6 +163,7 @@ func highlight_interactable(cell: Vector2) -> void:
 	if interact_loc.interactable:
 		interact_loc.interactable.highlight()
 
+
 func select_character(number: int) -> void:
 	if is_finished:
 		return
@@ -188,6 +189,7 @@ func _change_character(character: Character) -> void:
 	active_character.connect("move_finished", self, "_on_character_move_finished")
 	camera.target = character
 	get_tree().call_group("AbilityPanel", "update_info", character)
+	SFX.play("Swap")
 
 
 func _init_locations() -> void:
@@ -326,6 +328,7 @@ func _on_character_move_finished() -> void:
 
 func _on_collectible_collected(collectible: Collectible) -> void:
 	collected_collectibles += 1
+	SFX.play("Collect")
 
 
 func _on_brittle_floor_destroyed(cell: Vector2) -> void:

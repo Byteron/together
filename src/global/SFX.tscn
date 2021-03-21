@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://src/global/Sound.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/sound/sfx/kathrine_jump.ogg" type="AudioStream" id=27]
 [ext_resource path="res://assets/sound/sfx/wall_break.ogg" type="AudioStream" id=28]
 [ext_resource path="res://assets/sound/sfx/wall_crack.ogg" type="AudioStream" id=29]
+[ext_resource path="res://assets/sound/sfx/character_swap.ogg" type="AudioStream" id=30]
 
 [node name="SFX" type="Node"]
 pause_mode = 2
@@ -49,6 +50,11 @@ script = ExtResource( 2 )
 
 [node name="Collect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Swap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
 bus = "SFX"
 script = ExtResource( 2 )
 
