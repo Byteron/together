@@ -11,5 +11,5 @@ dest_files=[ "res://.import/character_swap.ogg-14bbb7afe91957ca61ed0efb47e0543d.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

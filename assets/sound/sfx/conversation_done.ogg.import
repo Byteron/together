@@ -11,5 +11,5 @@ dest_files=[ "res://.import/conversation_done.ogg-9eed95e186f0209fe01c40980152c9
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/wall_crack.ogg-9c55c33ee18e37cfe47df125b7b0ef5e.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
