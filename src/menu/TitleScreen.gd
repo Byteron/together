@@ -205,7 +205,7 @@ func _ready() -> void:
 	init_menu()
 	SFX.play("IntroAmbience", 2.0, -40, -10)
 	do_intro()
-	Progress.current_level = 3
+	Progress.current_level = 0
 
 func _enter_tree() -> void:
 	$Background.modulate = Color.black
