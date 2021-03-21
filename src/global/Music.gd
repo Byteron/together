@@ -25,6 +25,11 @@ func play(song_name: String, fade_in := 0.0, start_db := -40, end_db = -10) -> v
 	current_song.play()
 	print("Now Playing: %s" % song_name)
 
+func fade_out_and_stop() -> void:
+	tween.interpolate_property(current_song, "volume_db", null, -40.0, 1.0)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	stop()
 
 func stop() -> void:
 	if not current_song:
