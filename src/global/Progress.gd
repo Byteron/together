@@ -20,8 +20,8 @@ func set_collectibles(amount: int) -> void:
 
 
 func get_collectible_percent() -> float:
-	var all := 0.0
-	var collected := 0.0
+	var all := 10.0
+	var collected := 5.0
 
 	for level in collectibles:
 		all += collectibles[level]

@@ -64,6 +64,7 @@ func finish() -> void:
 	modulate.a = 0
 	emit_signal("finished")
 
+
 func is_writing():
 	return text_box.writing
 
