@@ -1,16 +1,19 @@
 extends Node
 
-var current_level := 2
+var current_level := 0
 var collectibles := {}
 var collected_collectibles := {}
 
 var time := 0
 
+
 func _process(delta: float) -> void:
 	time += delta
 
+
 func set_max_collectibles(amount: int) -> void:
 	collectibles[current_level] = amount
+
 
 func set_collectibles(amount: int) -> void:
 	collected_collectibles[current_level] = amount
