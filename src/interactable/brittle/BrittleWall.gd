@@ -8,8 +8,10 @@ func _interact(__: Character) -> void:
 	if _stage == 0:
 		_stage = 1
 		sprite.frame = 1
+		SFX.play("Crack")
 	elif _stage == 1:
 		_stage = 2
+		SFX.play("Break")
 		anim.play("break")
 
 

@@ -22,7 +22,9 @@ func exit() -> void:
 	if _stage == 0:
 		sprite.frame = 1
 		_stage = 1
+		SFX.play("Crack")
 	elif _stage == 1:
+		SFX.play("Break")
 		anim.play("break")
 		emit_signal("destroyed")
 
