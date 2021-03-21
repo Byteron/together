@@ -196,7 +196,7 @@ is_closed = false
 
 [node name="Switch" parent="Objects" index="33" instance=ExtResource( 2 )]
 position = Vector2( -40, -328 )
-doors = [ NodePath("../HDoor"), NodePath("../HDoor4"), NodePath("../HDoor8"), NodePath("") ]
+doors = [ NodePath("../HDoor"), NodePath("../HDoor4"), NodePath("../HDoor8") ]
 
 [node name="Switch2" parent="Objects" index="34" instance=ExtResource( 2 )]
 position = Vector2( -24, -328 )
