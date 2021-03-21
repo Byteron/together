@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/exit/Exit.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://src/interactable/vent/Vent.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/interactable/door/HSecurityDoor.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/interactable/plate/Plate.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/collectible/collectibles/Junk.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/interactable/cutscene_trigger/CutsceneTrigger.tscn" type="PackedScene" id=19]
 
 [node name="Level2" instance=ExtResource( 1 )]
 song = "Ingame1"
@@ -31,16 +33,19 @@ tile_data = PoolIntArray( -1048576, 11, 1, -1048575, 11, 196610, -1048574, 11, 1
 position = Vector2( -120, -8 )
 doors = [ NodePath("../../Objects/HDoor3"), NodePath("../../Objects/HDoor4") ]
 
+[node name="CutsceneTrigger1" parent="Plates" index="1" instance=ExtResource( 19 )]
+position = Vector2( 72, -104 )
+
 [node name="Exit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( -56, -168 )
 
 [node name="Exit2" parent="Exits" index="1" instance=ExtResource( 2 )]
 position = Vector2( -24, -168 )
 
-[node name="Vinyl" parent="Collectibles" index="0" instance=ExtResource( 9 )]
+[node name="Junk" parent="Collectibles" index="0" instance=ExtResource( 18 )]
 position = Vector2( 56, -104 )
 
-[node name="Vinyl2" parent="Collectibles" index="1" instance=ExtResource( 9 )]
+[node name="Vinyl" parent="Collectibles" index="1" instance=ExtResource( 9 )]
 position = Vector2( 264, -8 )
 
 [node name="Bunker" parent="Objects" index="0" instance=ExtResource( 8 )]
@@ -199,12 +204,53 @@ lines = [ "It isn't? Then what did you do?" ]
 [node name="Speech10" parent="Dialogues/FreeCalvinDialogue" index="9" instance=ExtResource( 6 )]
 lines = [ "I- ju- ", "You wouldn't get it.", "'Cause you're lame." ]
 
-[node name="EndDialogue" parent="Dialogues" index="2" instance=ExtResource( 7 )]
+[node name="JunkDialogue" parent="Dialogues" index="2" instance=ExtResource( 7 )]
+
+[node name="Speech0" parent="Dialogues/JunkDialogue" index="0" instance=ExtResource( 6 )]
+lines = [ "Wait, stop. Pick that thing up." ]
+
+[node name="Speech1" parent="Dialogues/JunkDialogue" index="1" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "What, this garbage?" ]
+
+[node name="Speech2" parent="Dialogues/JunkDialogue" index="2" instance=ExtResource( 6 )]
+lines = [ "It's not garbage, dweeb. It's a ThinkMesa X-1700 U3 2nd Gen 5th Revision.", "They're, like, IMPOSSIBLE to get on eBay." ]
+
+[node name="Speech3" parent="Dialogues/JunkDialogue" index="3" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Is it? I mean, it looks old.", "I bet it's only valuable because of its scarcity causing an inflated value, but now that civilisation has collapsed and everyone's dead, there's no-one who wants it so demand no longer outstrips supply." ]
+
+[node name="Speech4" parent="Dialogues/JunkDialogue" index="4" instance=ExtResource( 6 )]
+lines = [ "..." ]
+
+[node name="Speech5" parent="Dialogues/JunkDialogue" index="5" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "Not that eBay's a thing anymore. Y'know. World ended." ]
+
+[node name="Speech6" parent="Dialogues/JunkDialogue" index="6" instance=ExtResource( 6 )]
+lines = [ "Shuddup, loser." ]
+
+[node name="EndDialogue" parent="Dialogues" index="3" instance=ExtResource( 7 )]
 interrupt_music = false
 
 [node name="Speech" parent="Dialogues/EndDialogue" index="0" instance=ExtResource( 6 )]
+speaker = "Calvin"
+portrait = ExtResource( 11 )
+flip_portrait = true
+lines = [ "This is great! We can go find Mom and Dad, and then we'll...", "Er... Becky, what are we going to do now?" ]
+
+[node name="Speech2" parent="Dialogues/EndDialogue" index="1" instance=ExtResource( 6 )]
+lines = [ "...", "I dunno, man.", "Let's go find them first. We'll figure out where to go from there." ]
 
 [connection signal="finished" from="." to="Dialogues/EndDialogue" method="start"]
 [connection signal="started" from="." to="Stories/Story" method="start"]
+[connection signal="toggled" from="Plates/CutsceneTrigger1" to="Dialogues/JunkDialogue" method="start"]
 [connection signal="opened" from="Objects/Bunker" to="Dialogues/FreeCalvinDialogue" method="start"]
 [connection signal="finished" from="Stories/Story" to="Dialogues/IntroDialogue" method="start"]
+[connection signal="finished" from="Dialogues/EndDialogue" to="." method="next_level"]
