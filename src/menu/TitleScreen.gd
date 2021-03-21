@@ -13,7 +13,7 @@ func init_menu() -> void:
 	menu.items = {
 		"main_menu": {
 			"type": "menu",
-			"children": ["play", "settings", "credits", "quit"]
+			"children": ["play", "settings", "quit"]
 		},
 		"play": {
 			"type": "button",
@@ -113,10 +113,6 @@ func init_menu() -> void:
 			"type": "key_binding",
 			"action_name": "pause"
 		},
-		"credits": {
-			"type": "button",
-			"label": "Credits"
-		},
 		"quit": {
 			"type": "button",
 			"label": "Quit"
@@ -151,8 +147,6 @@ func _on_Menu_button_pressed(slug : String) -> void:
 	match slug:
 		"play":
 			start_game()
-		#"credits":
-			#open_credits()
 		"quit":
 			quit()
 
