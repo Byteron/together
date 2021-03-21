@@ -18,8 +18,8 @@ func play(song_name: String, fade_in := 0.0, start_db := -40, end_db = -10) -> v
 	current_song = songs[song_name]
 
 	if fade_in:
-		tween.interpolate_property(current_song, "volume_db", start_db, end_db, fade_in)
-		tween.start()
+		var __ = tween.interpolate_property(current_song, "volume_db", start_db, end_db, fade_in)
+		__ = tween.start()
 
 	current_song.play()
 
@@ -27,6 +27,6 @@ func play(song_name: String, fade_in := 0.0, start_db := -40, end_db = -10) -> v
 func stop() -> void:
 	if current_song != null:
 		current_song.stop()
-		tween.stop(current_song)
-		tween.remove(current_song)
+		var __ = tween.stop(current_song)
+		__ = tween.remove(current_song)
 		current_song = null

@@ -26,8 +26,8 @@ func play(sfx_name: String, fade_in := 0.0, start_db := -40, end_db := -10) -> v
 		var player: Sound = sfx[sfx_name]
 
 		if fade_in:
-			tween.interpolate_property(player, "volume_db", start_db, end_db, fade_in)
-			tween.start()
+			var __ = tween.interpolate_property(player, "volume_db", start_db, end_db, fade_in)
+			__ = tween.start()
 
 		player.play()
 
@@ -44,14 +44,14 @@ func play_2d(sfx_name: String, position: Vector2) -> void:
 func stop(sfx_name: String) -> void:
 	if sfx.has(sfx_name):
 		var player: Sound = sfx[sfx_name]
-		tween.stop(player)
-		tween.remove(player)
+		var __ = tween.stop(player)
+		__ = tween.remove(player)
 		player.stop()
 
 
 func stop_2d(sfx_name: String) -> void:
 	if sfx.has(sfx_name):
 		var player: Sound2D = sfx[sfx_name]
-		tween.stop(player)
-		tween.remove(player)
+		var __ = tween.stop(player)
+		__ = tween.remove(player)
 		player.stop()
