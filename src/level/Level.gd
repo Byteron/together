@@ -321,6 +321,9 @@ func _check_end_conditions() -> void:
 
 func _finish() -> void:
 	emit_signal("finished")
+
+
+func next_level() -> void:
 	Progress.set_max_collectibles(collectible_container.get_child_count())
 	Progress.set_collectibles(collected_collectibles)
 	Progress.next_level()
