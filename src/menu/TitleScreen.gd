@@ -168,7 +168,7 @@ func sudden_stop() -> void:
 func start_game() -> void:
 	sudden_stop()
 	yield(get_tree().create_timer(1.5), "timeout")
-	Progress.next_level()
+	get_tree().change_scene("res://src/story/Intro.tscn")
 
 func quit() -> void:
 	sudden_stop()
@@ -182,7 +182,8 @@ func do_intro() -> void:
 	tween.interpolate_property(menu, "modulate", Color.transparent, Color.white, 1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT, 8.0)
 	tween.start()
 	yield(get_tree().create_timer(3.0), "timeout")
-	Music.play("Intro")
+	if not skipped_intro:
+		Music.play("Intro")
 	yield(get_tree().create_timer(5.0), "timeout")
 	if not skipped_intro:
 		menu.visible = true
