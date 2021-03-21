@@ -87,6 +87,8 @@ func teleport_character(character: Character, target_cell: Vector2) -> void:
 	character.cell = target_cell
 	character.position = target_position
 
+	camera.move_to(character.position)
+
 
 func jump_character() -> void:
 	if is_finished:
