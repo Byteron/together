@@ -66,6 +66,9 @@ func interact() -> void:
 	if is_finished:
 		return
 
+	if not locations.has(active_character.cell + active_character.facing):
+		return
+
 	var loc: Location = locations[active_character.cell + active_character.facing]
 
 	if loc.can_interact(active_character):
