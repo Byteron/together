@@ -32,10 +32,7 @@ func play(sfx_name: String, fade_in := 0.0, start_db := -40, end_db := -10) -> v
 			var __ = tween.interpolate_property(player, "volume_db", start_db, end_db, fade_in)
 			__ = tween.start()
 
-		print("play %s" % sfx_name)
 		player.play()
-	else:
-		print("%s SFX does not exist" % sfx_name)
 
 
 func play_2d(sfx_name: String, position: Vector2) -> void:
