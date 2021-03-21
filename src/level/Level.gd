@@ -136,18 +136,12 @@ func move_character(direction: Vector2) -> void:
 
 	var loc: Location = locations[active_character.cell]
 
-	if not locations.has(loc.cell + active_character.facing):
-		return
-	
-	var interact_loc: Location = locations[loc.cell + active_character.facing]
-
-	if interact_loc.interactable:
-		interact_loc.interactable.unhighlight()
-
 	if not locations.has(active_character.cell + direction):
 		return
 
 	var next_loc: Location = locations[active_character.cell + direction]
+
+	unhighlight_interctable(loc.cell + active_character.facing)
 
 	active_character.facing = direction
 
@@ -172,6 +166,15 @@ func highlight_interactable(cell: Vector2) -> void:
 
 	if interact_loc.interactable:
 		interact_loc.interactable.highlight()
+
+func unhighlight_interctable(cell: Vector2) -> void:
+	if not locations.has(cell):
+		return
+
+	var interact_loc = locations[cell]
+
+	if interact_loc.interactable:
+		interact_loc.interactable.unhighlight()
 
 
 func select_character(number: int) -> void:
