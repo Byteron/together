@@ -15,6 +15,8 @@ func _ready() -> void:
 func start() -> void:
 	get_tree().paused = true
 
+	Music.play("Conversation", 0.5)
+
 	if has_next():
 		next()
 	else:
@@ -33,6 +35,8 @@ func next() -> void:
 
 
 func finish() -> void:
+	Music.play(Music.previous_song, 0.5)
+
 	get_tree().paused = false
 	emit_signal("finished")
 

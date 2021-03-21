@@ -4,6 +4,7 @@ onready var tween: Tween = $Tween
 
 var songs := {}
 var current_song: AudioStreamPlayer = null
+var previous_song := ""
 
 
 func _ready() -> void:
@@ -25,7 +26,8 @@ func play(song_name: String, fade_in := 0.0, start_db := -40, end_db = -10) -> v
 
 
 func stop() -> void:
-	if current_song != null:
+	if current_song:
+		previous_song = current_song.name
 		current_song.stop()
 		var __ = tween.stop(current_song)
 		__ = tween.remove(current_song)

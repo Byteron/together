@@ -16,6 +16,8 @@ var is_finished = false
 
 var collected_collectibles := 0
 
+export var song := "Solitude"
+
 onready var character_container := $Characters
 onready var object_container := $Objects
 onready var exit_container := $Exits
@@ -45,6 +47,8 @@ func _ready() -> void:
 		_change_character(character)
 
 	get_tree().call_group("CharacterPanel", "update_info", character_container.get_children())
+
+	Music.play(song)
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	emit_signal("started")
