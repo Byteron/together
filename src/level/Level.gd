@@ -48,7 +48,7 @@ func _ready() -> void:
 
 	get_tree().call_group("CharacterPanel", "update_info", character_container.get_children())
 
-	Music.play(song)
+	Music.play(song, 0.5)
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	emit_signal("started")

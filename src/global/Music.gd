@@ -23,12 +23,17 @@ func play(song_name: String, fade_in := 0.0, start_db := -40, end_db = -10) -> v
 		__ = tween.start()
 
 	current_song.play()
+	print("Now Playing: %s" % song_name)
 
 
 func stop() -> void:
-	if current_song:
-		previous_song = current_song.name
-		current_song.stop()
-		var __ = tween.stop(current_song)
-		__ = tween.remove(current_song)
-		current_song = null
+	if not current_song:
+		return
+
+	print("Stop Playing: %s" % current_song.name)
+
+	previous_song = current_song.name
+	current_song.stop()
+	var __ = tween.stop(current_song)
+	__ = tween.remove(current_song)
+	current_song = null

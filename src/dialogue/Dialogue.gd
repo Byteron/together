@@ -6,6 +6,8 @@ signal finished()
 var current := -1
 var speech: Speech = null
 
+var _skipped := false
+
 func _ready() -> void:
 	for speech in get_children():
 		speech.connect("finished", self, "_on_speech_finished")
@@ -15,11 +17,12 @@ func _ready() -> void:
 func start() -> void:
 	get_tree().paused = true
 
-	Music.play("Conversation", 0.5)
 
 	if has_next():
+		Music.play("Conversation", 0.5)
 		next()
 	else:
+		_skipped = true
 		finish()
 
 
@@ -35,7 +38,8 @@ func next() -> void:
 
 
 func finish() -> void:
-	Music.play(Music.previous_song, 0.5)
+	if not _skipped:
+		Music.play(Music.previous_song, 0.5)
 
 	get_tree().paused = false
 	emit_signal("finished")
