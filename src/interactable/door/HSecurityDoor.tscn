@@ -38,6 +38,7 @@ tracks/0/keys = {
 
 [node name="HSecurityDoor" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
+open_sound = "SecurityDoor"
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/close = SubResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://src/global/Sound.gd" type="Script" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://assets/sound/sfx/wall_break.ogg" type="AudioStream" id=28]
 [ext_resource path="res://assets/sound/sfx/wall_crack.ogg" type="AudioStream" id=29]
 [ext_resource path="res://assets/sound/sfx/character_swap.ogg" type="AudioStream" id=30]
+[ext_resource path="res://assets/sound/sfx/heavy_door_open.ogg" type="AudioStream" id=31]
 
 [node name="SFX" type="Node"]
 pause_mode = 2
@@ -176,4 +177,9 @@ script = ExtResource( 5 )
 [node name="DoorClose" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 attenuation = 0.784584
+script = ExtResource( 5 )
+
+[node name="SecurityDoor" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 31 )
+attenuation = 0.392292
 script = ExtResource( 5 )

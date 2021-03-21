@@ -9,6 +9,8 @@ export var _is_interactable := false
 export var locked_tex: Texture = null
 export var unlocked_tex: Texture = null
 
+export var open_sound := "DoorOpen"
+
 onready var locking_sprite: Sprite = get_node_or_null("LockingSprite")
 
 
@@ -41,7 +43,7 @@ func toggle() -> void:
 
 func open() -> void:
 	anim.play("open")
-	SFX.play_2d("DoorOpen", position)
+	SFX.play_2d(open_sound, position)
 
 	_is_changing = true
 
