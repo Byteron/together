@@ -136,6 +136,9 @@ func move_character(direction: Vector2) -> void:
 
 	var loc: Location = locations[active_character.cell]
 
+	if not locations.has(loc.cell + active_character.facing):
+		return
+	
 	var interact_loc: Location = locations[loc.cell + active_character.facing]
 
 	if interact_loc.interactable:
