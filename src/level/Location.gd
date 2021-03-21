@@ -8,7 +8,7 @@ var position := Vector2()
 var terrain: Terrain = null
 var interactable: Interactable = null setget _set_interactable
 var collectible: Collectible = null
-var pressure_plate: PressurePlate = null
+var floor_interactable: Interactable = null
 var character: Character = null setget _set_character
 
 
@@ -24,8 +24,8 @@ func interact(character: Character) -> void:
 
 
 func entered() -> void:
-	if pressure_plate:
-		pressure_plate.toggle()
+	if floor_interactable:
+		floor_interactable.enter()
 
 	if collectible:
 		emit_signal("collectible_collected", collectible)
@@ -34,8 +34,8 @@ func entered() -> void:
 
 
 func exited() -> void:
-	if pressure_plate:
-		pressure_plate.toggle()
+	if floor_interactable:
+		floor_interactable.exit()
 
 
 func is_jumpable() -> bool:

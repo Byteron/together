@@ -20,6 +20,7 @@ var collected_collectibles := {}
 onready var character_container := $Characters
 onready var object_container := $Objects
 onready var exit_container := $Exits
+onready var brittle_floor_container := $BrittleFloors
 onready var plate_container := $Plates
 onready var collectible_container := $Collectibles
 onready var camera: LevelCamera = $LevelCamera
@@ -31,6 +32,7 @@ onready var floors: TileMap = $Floors
 func _ready() -> void:
 	_init_locations()
 	_init_characters()
+	_init_brittle_floors()
 	_init_exits()
 	_init_plates()
 	_init_objects()
@@ -240,12 +242,22 @@ func _init_objects() -> void:
 			object.connect("interacted", self, "_on_crate_interacted")
 
 
+func _init_brittle_floors() -> void:
+	for brittle in brittle_floor_container.get_children():
+		var cell = world_to_map(brittle.position)
+		for vec in brittle.size:
+			var loc: Location = locations[cell + vec]
+			loc.floor_interactable = brittle
+
+		brittle.connect("destroyed", self, "_on_brittle_floor_destroyed", [cell])
+
+
 func _init_plates() -> void:
 	for plate in plate_container.get_children():
 		var cell = world_to_map(plate.position)
 		for vec in plate.size:
 			var loc: Location = locations[cell + vec]
-			loc.pressure_plate = plate
+			loc.floor_interactable = plate
 
 
 func _init_exits() -> void:
@@ -322,6 +334,14 @@ func _on_collectible_collected(collectible: Collectible) -> void:
 		collected_collectibles[collectible.type] += 1
 
 	get_tree().call_group("CollectiblePanel", "update_info", collectibles, collected_collectibles)
+
+
+func _on_brittle_floor_destroyed(cell: Vector2) -> void:
+	var loc: Location = locations[cell]
+	loc.floor_interactable = null
+	loc.terrain = Data.terrains["Chasm"]
+	walls.set_cellv(cell, walls.tile_set.find_tile_by_name("Chasm"))
+	walls.update_bitmask_area(cell)
 
 
 func _on_crate_interacted(cell: Vector2, direction: Vector2):

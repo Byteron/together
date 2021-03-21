@@ -45,6 +45,7 @@ func is_blocking(abilities: Array) -> bool:
 func get_allowed_interaction() -> int:
 	return allow_interaction[0] if allow_interaction else Character.Ability.MOVE
 
+
 func can_interact(character: Character) -> bool:
 	return _can_interact(character)
 

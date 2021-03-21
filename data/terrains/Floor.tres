@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 allow_movement = [ 0 ]
+is_jumpable = true

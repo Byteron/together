@@ -2,7 +2,8 @@ extends Node2D
 class_name Collectible
 
 enum Type {
-	VINYL
+	VINYL,
+	JUNK
 }
 
 export(Type) var type := 0

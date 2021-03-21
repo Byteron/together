@@ -1,6 +1,6 @@
 extends Node
 
-var current_level := 1
+var current_level := 0
 
 
 func next_level() -> void:

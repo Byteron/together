@@ -1,12 +1,7 @@
 extends Interactable
 class_name PressurePlate
 
-
-signal activated()
-signal deactivated()
-
 signal toggled()
-
 
 var _is_active := false
 
@@ -19,21 +14,13 @@ func _ready() -> void:
 		connect("toggled", door, "toggle")
 
 
-func toggle() -> void:
-	if _is_active:
-		deactivate()
-	else:
-		activate()
+func enter() -> void:
+	sprite.frame = 1
+	_is_active = true
 	emit_signal("toggled")
 
 
-func activate() -> void:
-	sprite.frame = 1
-	_is_active = true
-	emit_signal("activated")
-
-
-func deactivate() -> void:
+func exit() -> void:
 	sprite.frame = 0
 	_is_active = false
-	emit_signal("deactivated")
+	emit_signal("toggled")

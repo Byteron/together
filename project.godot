@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://src/game/ui/AbilityWarning.gd"
 }, {
 "base": "Interactable",
+"class": "BrittleFloor",
+"language": "GDScript",
+"path": "res://src/interactable/brittle/BrittleFloor.gd"
+}, {
+"base": "Interactable",
 "class": "Bunker",
 "language": "GDScript",
 "path": "res://src/interactable/bunker/Bunker.gd"
@@ -88,6 +93,11 @@ _global_script_classes=[ {
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://src/interactable/Interactable.gd"
+}, {
+"base": "Node2D",
+"class": "Junk",
+"language": "GDScript",
+"path": "res://src/collectible/collectibles/Junk.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
@@ -173,6 +183,7 @@ _global_script_class_icons={
 "AbilityData": "",
 "AbilityPanel": "",
 "AbilityWarning": "",
+"BrittleFloor": "",
 "Bunker": "",
 "Character": "",
 "Collectible": "",
@@ -186,6 +197,7 @@ _global_script_class_icons={
 "HSecurityDoor": "",
 "HUD": "",
 "Interactable": "",
+"Junk": "",
 "Level": "",
 "LevelCamera": "",
 "Loader": "",
