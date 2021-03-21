@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/images/portraits/Son.png" type="Texture" id=1]
 [ext_resource path="res://src/interactable/crate/Crate.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://src/interactable/door/HDoor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/interactable/plate/Plate.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/interactable/door/VDoor.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/images/portraits/Dad.png" type="Texture" id=22]
 
 [node name="Level2" instance=ExtResource( 4 )]
 song = "Ingame2"
@@ -264,23 +265,38 @@ position = Vector2( -24, 40 )
 position = Vector2( 8, 40 )
 
 [node name="Story" parent="Stories" index="0" instance=ExtResource( 7 )]
-texts = [ "Two hours earlier..." ]
+texts = [ "The children head onwards in search of their parents..." ]
 
-[node name="FreeCalvinDialogue" parent="Dialogues" index="0" instance=ExtResource( 15 )]
+[node name="FreeAaronDialogue" parent="Dialogues" index="0" instance=ExtResource( 15 )]
 
-[node name="Speech" parent="Dialogues/FreeCalvinDialogue" index="0" instance=ExtResource( 10 )]
-speaker = "Calvin"
-portrait = ExtResource( 1 )
-flip_portrait = true
-lines = [ "Hii!" ]
+[node name="Speech" parent="Dialogues/FreeAaronDialogue" index="0" instance=ExtResource( 10 )]
+lines = [ "Okay, I've rescued you. Now for the love of God, put down that guitar." ]
 
-[node name="Speech2" parent="Dialogues/FreeCalvinDialogue" index="1" instance=ExtResource( 10 )]
-lines = [ "Oh god..." ]
+[node name="Speech2" parent="Dialogues/FreeAaronDialogue" index="1" instance=ExtResource( 10 )]
+speaker = "Aaron"
+portrait = ExtResource( 22 )
+lines = [ "No can do, baby doll. This thing goes wherever I do." ]
+
+[node name="Speech3" parent="Dialogues/FreeAaronDialogue" index="2" instance=ExtResource( 10 )]
+lines = [ "As long as you don't start singing about hound dogs..." ]
 
 [node name="EndDialogue" parent="Dialogues" index="1" instance=ExtResource( 15 )]
 
 [node name="Speech" parent="Dialogues/EndDialogue" index="0" instance=ExtResource( 10 )]
+lines = [ "I've got a fix on where Mom's at.", "Let's go get her. I am, like, SO over the apocalypse already." ]
+
+[node name="Speech2" parent="Dialogues/EndDialogue" index="1" instance=ExtResource( 10 )]
+speaker = "Calvin"
+portrait = ExtResource( 1 )
+flip_portrait = true
+lines = [ "Yeah! Hang tight, Mom! We're on our way!" ]
+
+[node name="Speech3" parent="Dialogues/EndDialogue" index="2" instance=ExtResource( 10 )]
+speaker = "Aaron"
+portrait = ExtResource( 22 )
+lines = [ "Dad has left the building." ]
 
 [connection signal="finished" from="." to="Dialogues/EndDialogue" method="start"]
 [connection signal="started" from="." to="Stories/Story" method="start"]
+[connection signal="opened" from="Objects/Bunker" to="Dialogues/FreeAaronDialogue" method="start"]
 [connection signal="finished" from="Dialogues/EndDialogue" to="." method="next_level"]
