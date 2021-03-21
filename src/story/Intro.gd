@@ -11,6 +11,10 @@ func do_stuff() -> void:
 	yield(get_tree().create_timer(2.0), "timeout")
 	Progress.next_level()
 
+func _input(event : InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		Progress.next_level()
+
 func _ready() -> void:
 	do_stuff()
 
