@@ -6,8 +6,10 @@ var _is_muted := false
 
 onready var tween: Tween = $Tween
 
+
 func mute() -> void:
 	_is_muted = true
+
 
 func unmute() -> void:
 	_is_muted = false
@@ -23,13 +25,17 @@ func play(sfx_name: String, fade_in := 0.0, start_db := -40, end_db := -10) -> v
 		return
 
 	if sfx.has(sfx_name):
+
 		var player: Sound = sfx[sfx_name]
 
 		if fade_in:
 			var __ = tween.interpolate_property(player, "volume_db", start_db, end_db, fade_in)
 			__ = tween.start()
 
+		print("play %s" % sfx_name)
 		player.play()
+	else:
+		print("%s SFX does not exist" % sfx_name)
 
 
 func play_2d(sfx_name: String, position: Vector2) -> void:

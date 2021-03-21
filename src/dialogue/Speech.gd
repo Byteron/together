@@ -23,6 +23,7 @@ func _ready() -> void:
 	name_label.text = speaker
 	portrait_rect.texture = portrait
 	portrait_rect.flip_h = flip_portrait
+	text_box.speaker = speaker
 
 
 func start():

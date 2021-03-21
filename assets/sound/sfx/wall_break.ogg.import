@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wall_break.ogg-1ba46fdae0de27fa085e1c22668fdea6.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/wall_break.ogg"
+dest_files=[ "res://.import/wall_break.ogg-1ba46fdae0de27fa085e1c22668fdea6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

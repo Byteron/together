@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kathrine_jump.ogg-0da0dc36d0d406188448775b1995c286.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/kathrine_jump.ogg"
+dest_files=[ "res://.import/kathrine_jump.ogg-0da0dc36d0d406188448775b1995c286.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

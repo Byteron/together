@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/babblebloop4.ogg-3501d1b6990b561937f4ff0aef6d6665.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/babblebloop4.ogg"
+dest_files=[ "res://.import/babblebloop4.ogg-3501d1b6990b561937f4ff0aef6d6665.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

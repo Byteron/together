@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/character_swap.ogg-14bbb7afe91957ca61ed0efb47e0543d.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/character_swap.ogg"
+dest_files=[ "res://.import/character_swap.ogg-14bbb7afe91957ca61ed0efb47e0543d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

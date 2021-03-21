@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://src/global/Sound.gd" type="Script" id=2]
@@ -22,8 +22,13 @@
 [ext_resource path="res://assets/sound/sfx/footstep3.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/sound/sfx/footstep1.ogg" type="AudioStream" id=21]
 [ext_resource path="res://assets/sound/sfx/footstep2.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/sound/sfx/babblebloop3.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/sound/sfx/babblebloop2.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/sound/sfx/babblebloop1.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/sound/sfx/babblebloop4.ogg" type="AudioStream" id=26]
 
 [node name="SFX" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
@@ -85,6 +90,34 @@ volume_db = -12.0
 bus = "SFX"
 script = ExtResource( 2 )
 variations = [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 19 ) ]
+
+[node name="SpeechCalvin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -12.0
+bus = "SFX"
+script = ExtResource( 2 )
+singleton = false
+
+[node name="SpeechBecky" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -12.0
+bus = "SFX"
+script = ExtResource( 2 )
+singleton = false
+
+[node name="SpeechKathy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -12.0
+bus = "SFX"
+script = ExtResource( 2 )
+singleton = false
+
+[node name="SpeechAaron" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = -12.0
+bus = "SFX"
+script = ExtResource( 2 )
+singleton = false
 
 [node name="VentOpen" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )

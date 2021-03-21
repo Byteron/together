@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/conversation_done.ogg-9eed95e186f0209fe01c40980152c989.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sfx/conversation_done.ogg"
+dest_files=[ "res://.import/conversation_done.ogg-9eed95e186f0209fe01c40980152c989.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

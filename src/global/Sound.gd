@@ -7,13 +7,14 @@ export(Array, AudioStream) var variations := []
 
 
 func play(from_position := 0.0) -> void:
-	_randomize_stream()
+	if variations:
+		_randomize_stream()
 
 	if singleton:
 		.play(from_position)
 	else:
 		var player = self.duplicate()
-		player.singleton = false
+		player.singleton = true
 		player.connect("finished", self, "_on_finished", [ player ])
 		get_tree().current_scene.add_child(player)
 		player.play()
